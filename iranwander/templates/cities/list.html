@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {% for city in cities %}
+          <li>{{ city.name }}</li>
+        {% else %}
+          <li>No cities yet</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

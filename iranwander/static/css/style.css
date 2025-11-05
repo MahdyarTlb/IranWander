@@ -1,0 +1,13 @@
+body {
+           background-color: #F8F1E9;
+           font-family: Arial, sans-serif;
+           text-align: center;
+           direction: rtl;
+       }
+       h1 {
+           color: #1B6F73;
+       }
+       a {
+           color: #F4A261;
+           text-decoration: none;
+       }
