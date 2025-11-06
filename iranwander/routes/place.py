@@ -8,7 +8,7 @@ def list_places():
     places = Place.query.all()
     return render_template('places/list.html', places=places)
 
-@place.route('/<int:id>')
-def details_place(id):
-    place = Place.query.get_or_404(id)
+@place.route('/<int:place_id>')
+def details_place(place_id):
+    place = Place.query.get_or_404(place_id)
     return render_template('places/details.html', place=place)

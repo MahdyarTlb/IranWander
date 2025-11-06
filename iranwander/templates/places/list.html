@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-hi
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>مکان‌های گردشگری {{ city.name }}</h1>
+
+<ul>
+    {% for place in places %}
+    <li>
+        <a href="{{ url_for('main.place_detail', place_id=place.id) }}">
+            {{ place.name }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('main.city_detail', city_id=city.id) }}">⬅ بازگشت به شهر</a>
+
+{% endblock %}

@@ -8,7 +8,7 @@ def list_cities():
     cities = City.query.all()
     return render_template('cities/list.html', cities=cities)
 
-@city.route('/<int:id>')
-def details_city(id):
-    city = City.query.get_or_404(id)
-    return render_template('cities/details.html', city=city)
+@city.route('/<int:city_id>')
+def details_city(city_id):
+    city = City.query.get_or_404(city_id)
+    return render_template('cities/detail.html', city=city)

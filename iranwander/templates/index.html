@@ -1,11 +1,18 @@
-<!doctype html>
-<html>
-    <head>
-      <meta charset="utf-8">
-      <title>IranWander</title>
-    </head>
-    <body>
-      <h1>IranWander</h1>
-      <p>welcome to iran:))</p>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>به ایران‌وندر خوش آمدید 🇮🇷</h1>
+<p>مقاصد گردشگری ایران را کشف کنید.</p>
+
+<h3>شهرهای محبوب:</h3>
+<ul>
+    {% for city in cities %}
+        <li>
+            <a href="{{ url_for('city.details_city', city_id=city.id) }}">
+                {{ city.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

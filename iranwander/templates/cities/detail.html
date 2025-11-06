@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p>{{ city.name }}</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ city.name }}</h1>
+
+{% if city.image %}
+    <img src="{{ url_for('static', filename='images/cities/' ~ city.image) }}"
+         alt="{{ city.name }}" width="300">
+{% endif %}
+
+<p>{{ city.description }}</p>
+
+<hr>
+
+<a href="{{ url_for('place.list_places', city_id=city.id) }}">مشاهده مکان‌های این شهر</a>
+
+{% endblock %}

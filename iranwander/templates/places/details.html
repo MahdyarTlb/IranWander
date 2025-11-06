@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ place.name }}</h1>
+
+{% if place.image %}
+    <img src="{{ url_for('static', filename='images/places/' ~ place.image) }}"
+         alt="{{ place.name }}" width="300">
+{% endif %}
+
+<p>{{ place.description }}</p>
+
+{% if place.location_url %}
+<p>
+    📍 <a href="{{ place.location_url }}" target="_blank">مشاهده روی نقشه</a>
+</p>
+{% endif %}
+
+<a href="{{ url_for('main.places', city_id=place.city_id) }}">⬅ بازگشت</a>
+
+{% endblock %}

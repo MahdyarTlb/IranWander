@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "IranWander" }}</title>
+</head>
+<body style="font-family: sans-serif; direction: rtl;">
+
+    <nav style="background:#eee; padding:10px;">
+        <a href="/">خانه</a> |
+        <a href="{{ url_for('city.list_cities') }}">شهرها</a> |
+        <a href="/admin/dashboard">پنل ادمین</a>
+    </nav>
+
+    <div style="padding:20px;">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
