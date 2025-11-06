@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Add City</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <label>City Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Description:</label><br>
+    <textarea name="description"></textarea><br><br>
+
+    <label>Image:</label><br>
+    <input type="file" name="image" accept="image/*"><br><br>
+
+    <button type="submit">Add</button>
+</form>
+
+{% endblock %}

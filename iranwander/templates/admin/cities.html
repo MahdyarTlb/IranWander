@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Cities</h2>
+
+<a href="{{ url_for('admin.add_city') }}">Add New City</a>
+<br><br>
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>description</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for city in cities %}
+    <tr>
+        <td>{{ city.id }}</td>
+        <td>{{ city.name }}</td>
+        <td>{{ city.description }}</td>
+        <td>
+          <a href="{{ url_for('admin.edit_city', city_id=city.id) }}">Edit</a>
+          |
+          <form action="{{ url_for('admin.delete_city', city_id=city.id) }}" method="post" style="display:inline;">
+            <button type="submit" onclick="return confirm('Delete city?')">Delete</button>
+          </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

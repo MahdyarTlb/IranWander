@@ -13,6 +13,13 @@ def create_app(config_name=Config):
         template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
         static_folder=os.path.join(os.path.dirname(__file__), 'static')
     )
+    app.config['SECRET_KEY'] = 'ABCD123'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///iranwander.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'static', 'images')
+    app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB limit
+    ALLOWED_EXT = {'png', 'jpg', 'jpeg', 'gif'}
+
     app.config.from_object(config_name)
 
     db.init_app(app)

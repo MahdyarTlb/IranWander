@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "Admin Panel" }}</title>
+</head>
+<body>
+    <nav>
+        <a href="/admin">Dashboard</a> |
+        <a href="/admin/cities">Cities</a> |
+        <a href="/admin/tours">Places</a> |
+        <a href="/admin/logout">Logout</a>
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

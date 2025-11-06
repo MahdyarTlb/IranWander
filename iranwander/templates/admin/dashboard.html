@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>dashboard</title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
+<h2>Welcome to Admin Dashboard</h2>
 
-</body>
-</html>
+<ul>
+    <li><a href="{{ url_for('admin.manage_cities') }}">Manage Cities</a></li>
+    <li><a href="/admin/places">Manage Places</a></li>
+</ul>
+{% endblock %}
