@@ -2,16 +2,25 @@
 {% block content %}
 
 <h1>{{ city.name }}</h1>
-
+<p>{{ city.description }}</p>
 {% if city.image %}
-    <img src="{{ url_for('static', filename='images/cities/' ~ city.image) }}"
+    <img src="{{ url_for('static', filename='images/' ~ city.image) }}"
          alt="{{ city.name }}" width="300">
 {% endif %}
+<h2>Places in {{ city.name }}</h2>
 
-<p>{{ city.description }}</p>
 
-<hr>
 
-<a href="{{ url_for('place.list_places', city_id=city.id) }}">مشاهده مکان‌های این شهر</a>
+<ul>
+    {% for place in places %}
+        <li>
+            <a href="{{ url_for('city.place_details', place_id=place.id, city_id=city.id) }}">
+                {{ place.name }}
+            </a>
+        </li>
+    {% else %}
+        <li>No places available.</li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

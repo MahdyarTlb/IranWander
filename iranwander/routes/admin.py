@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in current_app.config.get('ALLOWED_EXT', {'png','jpg','jpeg','gif'})
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in current_app.config.get('ALLOWED_EXT', {'png','jpg','jpeg','gif', 'webp'})
 
 @admin.route('/', methods=['GET', 'POST'])
 def login():
@@ -133,3 +133,90 @@ def logout():
     logout_user()
     return redirect(url_for('admin.login'))
 
+@admin.route('/places')
+@login_required
+def list_places_admin():
+    if not current_user.is_admin:
+        return redirect(url_for('admin.login'))
+    places = Place.query.all()
+    return render_template('admin/places/list.html', places=places)
+
+
+@admin.route('/places/add', methods=['GET', 'POST'])
+@login_required
+def add_place():
+    if not current_user.is_admin:
+        return redirect(url_for('admin.login'))
+
+    cities = City.query.all()
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        description = request.form.get('description')
+        city_id = request.form.get('city_id')
+
+        image_file = request.files.get('image')
+        img_name = None
+
+        if image_file and allowed_file(image_file.filename):
+            filename = secure_filename(image_file.filename)
+            img_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+            image_file.save(img_path)
+            img_name = filename
+
+        new_place = Place(
+            name=name,
+            description=description,
+            city_id=city_id,
+            image=img_name
+        )
+
+        db.session.add(new_place)
+        db.session.commit()
+
+        flash("Place added successfully")
+        return redirect(url_for('admin.list_places_admin'))
+
+    return render_template('admin/places/add.html', cities=cities)
+
+
+@admin.route('/places/edit/<int:place_id>', methods=['GET', 'POST'])
+@login_required
+def edit_place(place_id):
+    if not current_user.is_admin:
+        return redirect(url_for('admin.login'))
+
+    place = Place.query.get_or_404(place_id)
+    cities = City.query.all()
+
+    if request.method == 'POST':
+        place.name = request.form.get('name')
+        place.description = request.form.get('description')
+        place.city_id = request.form.get('city_id')
+
+        image_file = request.files.get('image')
+        if image_file and allowed_file(image_file.filename):
+            filename = secure_filename(image_file.filename)
+            img_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+            image_file.save(img_path)
+            place.image = filename
+
+        db.session.commit()
+        flash("Place updated successfully")
+        return redirect(url_for('admin.list_places_admin'))
+
+    return render_template('admin/places/edit.html', place=place, cities=cities)
+
+
+@admin.route('/places/delete/<int:place_id>', methods=['POST'])
+@login_required
+def delete_place(place_id):
+    if not current_user.is_admin:
+        return redirect(url_for('admin.login'))
+
+    place = Place.query.get_or_404(place_id)
+    db.session.delete(place)
+    db.session.commit()
+
+    flash("Place deleted successfully")
+    return redirect(url_for('admin.list_places_admin'))

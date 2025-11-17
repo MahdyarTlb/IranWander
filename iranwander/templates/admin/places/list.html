@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>لیست مکان‌ها</h2>
+    <a class="btn btn-primary mb-3" href="{{ url_for('admin.add_place') }}">+ افزودن مکان جدید</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>نام</th>
+                <th>شهر</th>
+                <th>تصویر</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for place in places %}
+            <tr>
+                <td>{{ place.id }}</td>
+                <td>{{ place.name }}</td>
+                <td>{{ place.city.name }}</td>
+                <td>
+                    {% if place.image %}
+                    <img src="{{ url_for('static', filename='images/' + place.image) }}" width="80">
+                    {% else %}
+                    <span class="text-muted">ندارد</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('admin.edit_place', place_id=place.id) }}" class="btn btn-warning btn-sm">ویرایش</a>
+                    <form action="{{ url_for('admin.delete_place', place_id=place.id) }}" method="POST" style="display:inline;">
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('حذف شود؟')">حذف</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

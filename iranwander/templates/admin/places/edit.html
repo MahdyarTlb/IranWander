@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>ویرایش مکان: {{ place.name }}</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <div class="mb-3">
+            <label class="form-label">نام مکان</label>
+            <input type="text" name="name" class="form-control" value="{{ place.name }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">شهر</label>
+            <select name="city_id" class="form-control">
+                {% for city in cities %}
+                <option value="{{ city.id }}" {% if city.id == place.city_id %}selected{% endif %}>
+                    {{ city.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">توضیحات</label>
+            <textarea name="description" class="form-control" rows="4">{{ place.description }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">تصویر فعلی</label><br>
+            {% if place.image %}
+            <img src="{{ url_for('static', filename='images/' + place.image) }}" width="120">
+            {% else %}
+            <span class="text-muted">بارگذاری نشده</span>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">آپلود تصویر جدید</label>
+            <input type="file" name="image" class="form-control">
+        </div>
+
+        <button class="btn btn-primary">ذخیره تغییرات</button>
+        <a class="btn btn-secondary" href="{{ url_for('admin.list_places_admin') }}">بازگشت</a>
+
+    </form>
+</div>
+
+{% endblock %}

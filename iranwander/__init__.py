@@ -18,7 +18,7 @@ def create_app(config_name=Config):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), 'static', 'images')
     app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB limit
-    ALLOWED_EXT = {'png', 'jpg', 'jpeg', 'gif'}
+    ALLOWED_EXT = {'png', 'jpg', 'jpeg', 'webp', 'gif'}
 
     app.config.from_object(config_name)
 
@@ -29,12 +29,10 @@ def create_app(config_name=Config):
     from . import models
     from .routes.main import main as main_bp
     from .routes.city import city as city_bp
-    from .routes.place import place as place_bp
     from .routes.admin import admin as admin_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(city_bp)
-    app.register_blueprint(place_bp)
     app.register_blueprint(admin_bp)
 
     return app

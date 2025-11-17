@@ -4,7 +4,7 @@
 <h1>{{ place.name }}</h1>
 
 {% if place.image %}
-    <img src="{{ url_for('static', filename='images/places/' ~ place.image) }}"
+    <img src="{{ url_for('static', filename='images/' ~ place.image) }}"
          alt="{{ place.name }}" width="300">
 {% endif %}
 
@@ -16,6 +16,6 @@
 </p>
 {% endif %}
 
-<a href="{{ url_for('main.places', city_id=place.city_id) }}">⬅ بازگشت</a>
+<a href="{{ url_for('city.details_city', city_id=place.city_id) }}">⬅ بازگشت</a>
 
 {% endblock %}
