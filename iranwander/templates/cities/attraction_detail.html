@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ attraction.name }} - {{ super() }}{% endblock %}
+
+{% block main_heading %}{{ attraction.name }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <img src="{{ url_for('static', filename='img/' + attraction.header_image) }}" alt="{{ attraction.name }} Header" />
+</section>
+
+<section class="info">
+    <div class="details">
+        <h2>Location</h2>
+        <p>{{ attraction.location }}</p>
+
+        <h2>Visiting Hours</h2>
+        <p>{{ attraction.hours }}</p>
+
+        <h2>Ticket Price</h2>
+        <p>{{ attraction.price }}</p>
+
+        <h2>Overview</h2>
+        <p>
+            {{ attraction.overview }}
+        </p>
+    </div>
+
+    <div class="gallery">
+        {% for image in attraction.gallery_images %}
+        <img src="{{ url_for('static', filename='img/' + image) }}" alt="{{ attraction.name }} Gallery Image" />
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

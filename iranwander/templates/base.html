@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Iran Wander{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jamshid.css') }}" />
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    {% block header %}
+    <header>
+        <h1>{% block main_heading %}Iran Wander{% endblock %}</h1>
+    </header>
+    {% endblock %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {% block modals %}
+    <div id="overlay" class="overlay hidden"></div>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content" id="modal-content"></div>
+    </div>
+    {% endblock %}
+
+    {% block footer %}
+    <footer>
+        <p>© 2025 Iran Wander</p>
+    </footer>
+    {% endblock %}
+
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

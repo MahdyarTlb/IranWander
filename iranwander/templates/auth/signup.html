@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up | {{ super() }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('auth.signup') }}">
+    <fieldset class="form">
+        <legend class="legend"></legend>
+        <div class="login">
+            <legend>
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo">
+            </legend>
+            <div class="welcome-div">
+                <p class="welcome-p">Welcome to our platform!</p>
+            </div>
+            <div class="login-text">
+                <p class="logins-p">" Please Sign In With Username, Password and Email "</p>
+            </div>
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert info">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <div class="inputs">
+                <div class="top-inputs">
+                    <div class="input-group">
+                        <input required type="text" name="username" autocomplete="off" class="input">
+                        <label class="user-label">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input required type="password" name="password" autocomplete="off" class="input">
+                        <label class="user-label">Password</label>
+                    </div>
+                </div>
+                <div class="input-group Email-div">
+                    <input required type="email" name="email" autocomplete="off" class="input Email">
+                    <label class="user-label email-label">Your email address</label>
+                </div>
+            </div>
+            <div class="button-sign-in">
+                <input type="submit" value="Enter">
+            </div>
+            <div class="back-to-login">
+                <a href="{{ url_for('auth.login') }}">Back To login</a>
+            </div>
+        </div>
+    </fieldset>
+</form>
+{% endblock content %}

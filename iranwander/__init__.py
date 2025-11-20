@@ -23,8 +23,10 @@ def create_app(config_name=Config):
     from . import models
     from .routes.main import main as main_bp
     from .routes.city import city as city_bp
+    from .routes.auth import auth as auth_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(city_bp)
+    app.register_blueprint(auth_bp)
 
     return app

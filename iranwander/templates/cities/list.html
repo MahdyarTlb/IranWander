@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <ul>
-        {% for city in cities %}
-          <li>{{ city.name }}</li>
-        {% else %}
-          <li>No cities yet</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}City Cards | {{ super() }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cities.css') }}">
+{% endblock %}
+
+{% block main_heading %}Iran Cities{% endblock %}
+
+{% block content %}
+<h2 class="title">Iran Cities</h2>
+
+<div class="container">
+  {% for city in cities %}
+  <div class="card">
+    <img src="{{ url_for('static', filename='img/' + city.image_name) }}" alt="{{ city.name }}">
+
+    <div class="info">
+      <h3>{{ city.name }}</h3>
+    </div>
+
+    <a href="{{ url_for('city.details_city', id=city.id) }}" class="btn">Show Attractions</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/cities.js') }}"></script>
+{% endblock %}

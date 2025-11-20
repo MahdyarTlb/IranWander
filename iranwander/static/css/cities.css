@@ -1,0 +1,152 @@
+body {
+    font-family: sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #c9e9ff);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #0b3c5d;
+    font-weight: 800;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    width: 900px;        
+    height: 700px;       
+    margin: 0 auto;
+}
+
+/* Card positions */
+.container .card:nth-child(1) { top: 0; left: 0; }
+.container .card:nth-child(2) { top: 0; right: 0; }
+.container .card:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.container .card:nth-child(4) { bottom: 0; left: 0; }
+.container .card:nth-child(5) { bottom: 0; right: 0; }
+
+/* Main Cards */
+.card {
+    position: absolute;
+    width: 260px;
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden; /* خیلی مهم */
+}
+
+.card img {
+    width: 100%;
+    height: 180px;       /* ارتفاع بیشتر = تصویر بهتر */
+    object-fit: cover;   /* بهترین حالت */
+    display: block;
+}
+
+.info {
+    padding: 15px;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #024f46;
+}
+
+/* Main More Info Button */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    background: #0b3c5d;
+    color: white;
+    text-align: center;
+    font-size: 17px;
+    text-decoration: none;
+    border-radius: 0 0 14px 14px;
+    transition: background .2s ease;
+}
+
+.btn:hover {
+    background: #072b43;
+}
+
+/* Modal */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 99;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.2);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 650px;
+}
+
+/* Attraction Cards in modal */
+.attraction-card {
+    width: 260px;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.attraction-card img {
+    width: 100%;
+    height: 180px;      
+    object-fit: cover;
+    display: block;
+}
+
+.attraction-card h4 {
+    margin: 12px;
+    font-size: 19px;
+    color: #024f46;
+    font-weight: 700;
+}
+
+/* Modal More Info Btn  */
+.more-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background: #0b3c5d;
+    color: white;
+    text-align: center;
+    border-radius: 0 0 14px 14px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background .2s ease;
+    margin-top: 10px;
+}
+
+.more-btn:hover {
+    background: #072b43;
+}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Login | {{ super() }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('auth.login') }}">
+    <fieldset class="form">
+        <legend class="legend"></legend>
+        <div class="login">
+            <legend>
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo">
+            </legend>
+            <div class="welcome-div">
+                <p class="welcome-p">Welcome! Log in to continue</p>
+            </div>
+            <div class="login-text">
+                <p class="logins-p">" Login With Username And Password "</p>
+            </div>
+
+            {% with messages = get_flashed_messages(category_filter=["login_error"]) %}
+            {% if messages %}
+            <div class="alert error">
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <div class="inputs">
+                <div class="input-group">
+                    <input required="" type="text" name="username" autocomplete="off" class="input">
+                    <label class="user-label">Username</label>
+                </div>
+
+                <div class="input-group">
+                    <input required="" type="password" name="password" autocomplete="off" class="input">
+                    <label class="user-label">Password</label>
+                </div>
+            </div>
+            <div class="forget-password">
+                <a href="{{ url_for('auth.forget_password') }}">Forget password? </a>
+            </div>
+            <div class="login-button">
+                <input type="submit" value="Login">
+            </div>
+
+            <div class="sign-in">
+                <p>don't have an account? <a href="{{ url_for('auth.signup') }}" id="sign-in">sign in</a></p>
+            </div>
+        </div>
+    </fieldset>
+</form>
+{% endblock content %}

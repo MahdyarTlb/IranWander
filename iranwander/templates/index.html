@@ -1,11 +1,169 @@
-<!doctype html>
-<html>
-    <head>
-      <meta charset="utf-8">
-      <title>IranWander</title>
-    </head>
-    <body>
-      <h1>IranWander</h1>
-      <p>welcome to iran:))</p>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Iran Wander | {{ super() }}{% endblock %}
+
+{# These blocks are empty to hide the default header and footer from base.html #}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block modals %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+{% endblock %}
+
+{% block content %}
+<header class="header container">
+    <nav class="nav">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo" />
+            <h1>Iran Wander</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('city.list_cities') }}">Cities</a></li>
+            <li><a href="#">Stories</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search destinations..." />
+        <button>Search</button>
+    </div>
+
+    <div class="hero">
+        <div class="hero-text">
+            <h2>Discover Iran’s **Hidden Wonders**</h2>
+            <p>Explore the heart of Iran, from ancient ruins to breathtaking landscapes. Uncover the timeless stories
+                that shaped civilization.</p>
+            {# Random search button, likely needs JS functionality #}
+            <button class="btn-primary" id="random-trip-btn">
+                Find Your Next Adventure
+            </button>
+        </div>
+
+        {# HERO IMAGES #}
+        <div class="hero-images">
+            <img src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iranian Nature" />
+            <img src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iranian Landscape" />
+            <img src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Cultural Site" />
+        </div>
+    </div>
+</header>
+
+{# POPUP (For the random trip button) #}
+<div id="random-popup" class="popup hidden">
+    <div class="popup-content">
+        <h3>Your Random Destination 🌍</h3>
+        <p id="random-destination"></p>
+        <button id="close-popup">Close</button>
+    </div>
+</div>
+
+{# DESTINATIONS Section #}
+<section class="destinations container">
+    <h2>Top Destinations</h2>
+    <div class="destination-grid">
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/topdestimain1.jpg') }}" alt="Persepolis" />
+            <h3>Persepolis</h3>
+            <p>Fars Province</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/topdestimain2.jpeg') }}" alt="Naqsh-e Jahan Square" />
+            <h3>Naqsh-e Jahan Square</h3>
+            <p>Isfahan</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/ferdosi2.jpg') }}" alt="Ferdowsi's Tomb" />
+            <h3>Ferdowsi's Tomb</h3>
+            <p>Mashhad</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/milad3.jpg') }}" alt="Milad Tower" />
+            <h3>Milad Tower</h3>
+            <p>Tehran</p>
+        </div>
+    </div>
+</section>
+
+{# STORIES Section #}
+<section class="stories container">
+    <h2>Latest Stories</h2>
+    <div class="stories-grid">
+        <div class="story">
+            <img src="{{ url_for('static', filename='img/jamshidheader.jpg') }}" alt="Gate of All Nations" />
+            <div class="story-content">
+                <h3>Passing Through the Gate of All Nations</h3>
+                <p>
+                    Walking among the ruins of Persepolis feels like stepping into history—an echo of empire and
+                    grandeur.
+                </p>
+            </div>
+        </div>
+        <div class="story">
+            <img src="{{ url_for('static', filename='img/storymain.jpg') }}" alt="Isfahan Bazaar" />
+            <div class="story-content">
+                <h3>The Grand Bazaar of Isfahan</h3>
+                <p>
+                    Immerse yourself in the colors, scents, and sounds of a centuries-old Persian tradition.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# HIGHLIGHTS Section #}
+<section class="highlights container">
+    <h2>Traveler Highlights</h2>
+    <div class="highlights-layout">
+        <div class="highlight-content">
+            <img src="{{ url_for('static', filename='img/jangalmain.png') }}" alt="Forest" />
+            <img src="{{ url_for('static', filename='img/biabanmain.png') }}" alt="Desert" />
+            <img src="{{ url_for('static', filename='img/bazarmain.png') }}" alt="Bazaar" />
+            <img src="{{ url_for('static', filename='img/tarikhmain.png') }}" alt="Historical Site" />
+        </div>
+        <div class="highlight-text">
+            <h3>A Journey Through Ancient Persia</h3>
+            <p>
+                Discover the hidden gems of Iran — from vast deserts to lush forests and majestic mountains. Every
+                corner tells a story that survived millennia.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section class="newsletter">
+    <div class="newsletter-box container">
+        <h2>Get Travel Inspiration Straight to Your Inbox</h2>
+        <p>Subscribe for stories, guides, and destination insights.</p>
+        <form class="newsletter-form" method="POST" action="#">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="footer-col">
+            <h3>About Iran Wander</h3>
+            <p>
+                Explore Iran’s natural and cultural treasures with us — your guide to the heart of Persia.
+            </p>
+        </div>
+    </div>
+    <p class="footer-bottom">
+        © 2025 Iran Wander. All Rights Reserved.
+    </p>
+</footer>
+
+{# Linking the main JavaScript file #}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
+{% endblock content %}
