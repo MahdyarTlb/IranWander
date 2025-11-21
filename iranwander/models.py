@@ -23,8 +23,15 @@ class City(db.Model):
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=True)
-    description = db.Column(db.Text(), nullable=True)
+    
+    description = db.Column(db.Text(), nullable=True) 
     image = db.Column(db.String(128), nullable=True)
+    
+    location = db.Column(db.String(255), nullable=True)
+    hours = db.Column(db.String(100), nullable=True)
+    price = db.Column(db.String(100), nullable=True)
+    gallery_images = db.Column(db.Text(), nullable=True) 
+    
     city_id = db.Column(db.Integer, db.ForeignKey('city.id'), nullable=True)
 
     city = db.relationship('City', backref=db.backref('places', lazy=True))

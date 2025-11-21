@@ -281,3 +281,99 @@ body{
   .nav{ flex-direction:row; align-items:center; justify-content:space-between; gap:.6rem; }
   .logo img{ width:36px; height:36px; }
 }
+
+/* ========================================= */
+/* استایل‌های تخصصی صفحه جزئیات مکان دیدنی (attraction_detail.html) */
+/* ========================================= */
+
+/* --- تصویر Header (Hero Section) --- */
+.hero {
+    width: 100%;
+    max-height: 450px; 
+    overflow: hidden; 
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+.hero img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* --- بخش محتوا (چینش دو ستونه) --- */
+.info {
+    display: flex; 
+    padding: 30px 0;
+    gap: 40px; 
+    flex-wrap: wrap; 
+    background-color: var(--card); 
+    border-radius: var(--round);
+    box-shadow: var(--shadow);
+    margin-top: -80px;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- ستون چپ: جزئیات متنی (Details) --- */
+.details {
+    flex: 2; 
+    min-width: 300px;
+    padding: 0 20px;
+}
+
+.details h2 {
+    color: var(--accent); 
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.details p {
+    color: var(--text);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+/* --- ستون راست: گالری تصاویر (Gallery) --- */
+.gallery {
+    flex: 1; 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    padding: 10px;
+    border-radius: var(--round); 
+    background: transparent; 
+    box-shadow: none;
+    align-content: start;
+}
+
+.gallery img {
+    width: 100%;
+    height: 120px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(3,18,18,0.06);
+}
+
+/* --- MEDIA QUERIES برای بخش info --- */
+@media (max-width: 820px) {
+    .info {
+        flex-direction: column;
+        margin-top: -30px;
+    }
+    .gallery {
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    .details {
+        padding: 0 20px;
+    }
+}
+@media (max-width: 550px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+

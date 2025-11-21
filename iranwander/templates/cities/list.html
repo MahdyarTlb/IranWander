@@ -14,7 +14,7 @@
 <div class="container">
   {% for city in cities %}
   <div class="card">
-    <img src="{{ url_for('static', filename='img/' + city.image_name) }}" alt="{{ city.name }}">
+    <img src="{{ url_for('static', filename='img/' + city.image) }}" alt="{{ city.name }}">
 
     <div class="info">
       <h3>{{ city.name }}</h3>
