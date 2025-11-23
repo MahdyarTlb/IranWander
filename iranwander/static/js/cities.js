@@ -69,3 +69,9 @@ overlay.addEventListener("click", () => {
   overlay.classList.add("hidden");
   modal.classList.add("hidden");
 });
+
+document.querySelectorAll(".like-icon").forEach((icon) => {
+  icon.addEventListener("click", () => {
+    icon.classList.toggle("liked");
+  });
+});

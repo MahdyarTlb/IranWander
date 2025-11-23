@@ -21,14 +21,22 @@
             <p><b>Forget Password</b></p>
         </div>
         <div class="text-forget">
-            <p>" Enter your email address below to reset your password "</p>
+            <p>"Enter your email address below to reset your password"</p>
         </div>
-        <div class="input-group">
-            <input required="" type="email" name="email" autocomplete="off" class="input"
-                placeholder="Your Email Address">
+
+        <div class="inputs">
+            <div class="input-group">
+                <input required="" type="email" name="email" autocomplete="off" class="input">
+                <label class="user-label">Email Address</label>
+            </div>
         </div>
-        <div class="button">
-            <input type="submit" value="Send Reset Link">
+
+        <div class="submit-button">
+            <input type="submit" value="Reset Password">
+        </div>
+
+        <div class="back-to-login">
+            <a href="{{ url_for('auth.login') }}">Back To Login</a>
         </div>
     </fieldset>
 </form>

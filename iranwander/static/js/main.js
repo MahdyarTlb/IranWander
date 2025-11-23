@@ -1,10 +1,14 @@
 const destinations = [
-  { name: "Persepolis", region: "Fars Province" },
+  { name: "Persepolis", region: "Shiraz" },
+  { name: "Hafez Mausoleum", region: "Shiraz" },
   { name: "Naqsh-e Jahan Square", region: "Isfahan" },
-  { name: "Badab Soort", region: "Mazandaran" },
-  { name: "Kandovan Village", region: "East Azerbaijan" },
-  { name: "Lut Desert", region: "Kerman" },
-  { name: "Caspian Forests", region: "Gilan" },
+  { name: "Si-o-se-pol Bridge", region: "Isfahan" },
+  { name: "Milad Tower", region: "Tehran" },
+  { name: "Golestan Palace", region: "Tehran" },
+  { name: "Chamran Park", region: "Karaj" },
+  { name: "Little Iran Park", region: "Karaj" },
+  { name: "Imam Reza Shrine", region: "Mashhad" },
+  { name: "Ferdosi Mausoleum", region: "Mashhad" },
 ];
 
 const btn = document.getElementById("random-trip-btn");
