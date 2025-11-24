@@ -1,53 +1,405 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Panel</title>
+    <title>Iran Wander | My Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">-->
 
-    <!-- Load CSS from Flask static folder -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/panel_admin.css') }}">
+    <style>
+        :root {
+            --accent: #23a6a6;
+            --accent-dark: #198f8f;
+            --bg-glass: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #f8f9fa;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --radius: 20px;
+            --transition: 350ms cubic-bezier(0.22, 0.9, 0.35, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #bdeffd 0%, #c8f3e8 100%);
+            min-height: 100vh;
+            margin: 0;
+            color: #083344;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .user-greeting {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .logout-btn {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Dashboard Grid */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(35, 166, 166, 0.18);
+        }
+
+        .card h2 {
+            margin: 0 0 1.5rem;
+            font-size: 1.5rem;
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+        }
+
+        .profile-card h2 { color: white; }
+        .profile-card p { margin: 0.8rem 0; font-size: 1.05rem; opacity: 0.95; }
+        .profile-card .avatar-big {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        /* Liked Cities */
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .city-card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: var(--transition);
+        }
+
+        .city-card:hover {
+            transform: scale(1.06);
+        }
+
+        .city-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .city-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            text-align: center;
+        }
+
+        .city-overlay h4 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .remove-like {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(231, 76, 60, 0.92);
+            color: white;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            backdrop-filter: blur(8px);
+        }
+
+        .remove-like:hover {
+            background: #c0392b;
+            transform: scale(1.15);
+        }
+
+        .no-likes {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #636e72;
+            font-size: 1.4rem;
+        }
+
+        .no-likes i {
+            font-size: 4.5rem;
+            color: #b2bec3;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1.5px solid rgba(8,51,68,0.1);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(35,166,166,0.15);
+        }
+
+        button[type="submit"], .btn-home {
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        button[type="submit"]:hover, .btn-home:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(35,166,166,0.25);
+        }
+
+        .btn-home {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            max-width: 300px;
+            margin: 3rem auto 0;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; text-align: center; gap: 1rem; }
+            .dashboard { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1 class="title">Admin Panel</h1>
 
-        <!-- User Info Section -->
-        <section class="card">
-            <h2>User Information</h2>
-            <div class="info">
-                <p><strong>Name:</strong> {{ user.name }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
-                <p><strong>Password:</strong> ******</p>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>My Account</h1>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span class="user-greeting">Welcome back, {{ current_user.username }}!</span>
+            <a href="{{ url_for('user.logout') }}" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="dashboard">
+
+        <!-- Profile Card -->
+        <div class="card profile-card">
+            <div class="avatar-big" data-username="{{ current_user.username }}">
+                {{ current_user.username[:1]|upper }}
             </div>
-        </section>
+            <h2>Account Overview</h2>
+            <p><strong>Username:</strong> {{ current_user.username }}</p>
+            <p><strong>Email:</strong> {{ current_user.email }}</p>
+            <p><strong>Member since:</strong> 2025</p>
+        </div>
 
-        <!-- Change Password Section -->
-        <section class="card">
+        <!-- Change Password -->
+        <div class="card">
             <h2>Change Password</h2>
-            <form class="password-form" method="POST" action="/change_password">
-                <label>New Password:</label>
-                <input type="password" name="new_password" placeholder="Enter new password">
-
-                <label>Confirm New Password:</label>
-                <input type="password" name="confirm_password" placeholder="Re-enter new password">
-
+            <form method="POST" action="{{ url_for('user.change_password') }}">
+                <div class="form-group">
+                    <input type="password" name="new_password" placeholder="New password (min 6 characters)" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="confirm_password" placeholder="Confirm new password" required minlength="6">
+                </div>
                 <button type="submit">Update Password</button>
             </form>
-        </section>
+        </div>
 
-        <!-- Liked Places Section -->
-        <section class="card">
-            <h2>Liked Places</h2>
-            <ul class="liked-list">
-                {% for place in liked %}
-                <li>{{ place }}</li>
-                {% endfor %}
-            </ul>
-        </section>
+<!-- بخش شهرهای مورد علاقه — نسخه لیست خفن و مینیمال -->
+<div class="favorites-section">
+    <h2>Your Favorite Cities</h2>
+
+    {% if current_user.favorites|length > 0 %}
+        <div class="favorites-list">
+            {% for city in current_user.favorites %}
+            <div class="favorite-row">
+                <div class="city-title">
+                    <span class="bullet"></span>
+                    <a href="{{ url_for('city.list_cities', id=city.id) }}" class="city-name-link">
+                        {{ city.name }}
+                    </a>
+                </div>
+
+                <div class="actions">
+                    <button class="btn-remove" onclick="unlikeCity({{ city.id }})" title="Remove">
+                        Remove
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-likes">
+            <p>You haven't saved any cities yet!</p>
+            <small>Start exploring and tap the heart to save your favorites</small>
+        </div>
+    {% endif %}
+</div>
+
     </div>
-</body>
 
+    <div style="text-align: center;">
+        <a href="{{ url_for('main.index') }}" class="btn-home">
+            Back to Homepage
+        </a>
+    </div>
+</div>
+
+<script>
+    // همون کد قبلی unlike + آواتار رنگی
+    async function unlikeCity(cityId) {
+        if (!confirm('Remove this city from your favorites?')) return;
+
+        const res = await fetch('/api/like', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ city_id: cityId })
+        });
+
+        const data = await res.json();
+        if (data.ok && !data.liked) {
+            location.reload();
+        } else {
+            alert('Error removing from favorites!');
+        }
+    }
+
+    // آواتار بزرگ رنگی (همون کد قبلی)
+    document.addEventListener('DOMContentLoaded', () => {
+        const avatar = document.querySelector('.avatar-big[data-username]');
+        if (avatar) {
+            const username = avatar.getAttribute('data-username') || 'A';
+            let hash = 0;
+            for (let i = 0; i < username.length; i++) {
+                hash = username.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const colors = [
+                ['#23a6a6', '#198f8f'], ['#e91e63', '#c2185b'], ['#9c27b0', '#7b1fa2'],
+                ['#673ab7', '#512da8'], ['#2196f3', '#1976d2'], ['#ff9800', '#f57c00'],
+                ['#4caf50', '#388e3c']
+            ];
+            const colorPair = colors[Math.abs(hash % colors.length)];
+            avatar.style.background = `linear-gradient(135deg, ${colorPair[0]}, ${colorPair[1]})`;
+        }
+    });
+</script>
+
+</body>
 </html>

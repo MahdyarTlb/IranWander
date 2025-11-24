@@ -1,12 +1,56 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+import random
+import string
+from flask_mail import Message
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_user
 
 from ..models import User, db
 from werkzeug.security import check_password_hash
 
-import secrets
-
 auth = Blueprint('auth', __name__, template_folder='templates/auth')
+
+
+def generate_random_password(length=6):
+    chars = string.ascii_letters + string.digits
+    return ''.join(random.choice(chars) for _ in range(length))
+
+
+@auth.route('/forget-password', methods=['GET', 'POST'])
+def forget_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            # رمز جدید بساز
+            new_password = generate_random_password(12)
+            user.set_password(new_password)  # هش میشه
+            db.session.commit()
+
+            # ایمیل بفرست
+            msg = Message(
+                subject="Iran Wander - Your New Password",
+                sender="no-reply@iranwander.ir",
+                recipients=[email]
+            )
+            msg.html = render_template('new_password.html',
+                                       username=user.username,
+                                       new_password=new_password)
+
+            try:
+                current_app.mail.send(msg)
+                flash('رمز جدید به ایمیل شما ارسال شد! لطفاً بعد از ورود، رمزتون رو عوض کنید.', 'success')
+                return render_template('auth/setpassword.html', email = email)
+            except Exception as e:
+                print(f"noo: {e}")
+                flash('ایمیل ارسال نشد، ولی رمز شما عوض شد. با این رمز وارد شید: ' + new_password, 'warning')
+        else:
+            flash('ایمیلی با این آدرس پیدا نشد!', 'danger')
+
+        return redirect(url_for('auth.login'))
+
+    return render_template('auth/forget.html')
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -66,27 +110,6 @@ def signup():
         return redirect(url_for("auth.login"))
 
     return render_template('auth/signup.html')
-
-@auth.route('/forget', methods=['GET', 'POST'])
-def forget_password():
-
-    if request.method == 'POST':
-        email = request.form.get("email").strip()
-
-        user = User.query.filter_by(email=email).first()
-        if not user:
-            flash("No user found with the email.", "error")
-            return redirect(url_for("auth.forget_password"))
-
-        token = secrets.token_hex(16)
-        user.reset_token = token
-        db.session.commit()
-
-        flash("Reset link created! (Temporary).", "info")
-
-        return redirect(url_for("auth.set_password", token=token))
-
-    return render_template('auth/forget.html')
 
 @auth.route('/set-password/<token>', methods=['GET', 'POST'])
 def set_password(token):

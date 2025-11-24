@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
@@ -9,6 +10,7 @@ import os
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
+mail = Mail()
 
 def create_app(config_name=Config):
     # static files are two step upper than current dir
@@ -26,14 +28,29 @@ def create_app(config_name=Config):
     db.init_app(app)
     migrate.init_app(app, db)
 
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+
+    app.config['MAIL_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USERNAME'] = 'talebimahdyar8@gmail.com'
+    app.config['MAIL_PASSWORD'] = 'ejrf qrac yaun dzsd'
+    app.config['MAIL_DEFAULT_SENDER'] = 'talebimahdyar8@gmail.com'
+
+    mail.init_app(app)
+    app.mail = mail
+
     from . import models
     from .routes.main import main as main_bp
     from .routes.city import city as city_bp
     from .routes.auth import auth as auth_bp
+    from .routes.api import api as api_bp
+    from .routes.user import user_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(city_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(api_bp)
+    app.register_blueprint(user_bp)
 
     return app
 

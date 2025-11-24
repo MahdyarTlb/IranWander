@@ -555,3 +555,136 @@ body{
 .center{ text-align:center }
 .mb-1{ margin-bottom:1rem }
 .p-1{ padding:1rem }
+
+/* ==== USER AVATAR DROPDOWN - لالیگا ورژن ==== */
+.user-menu {
+  position: relative;
+  list-style: none;
+}
+
+.user-avatar-dropdown {
+  position: relative;
+}
+
+.avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  padding: 0.45rem 0.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.avatar-btn:hover {
+  background: rgba(255,255,255,0.85);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(35,166,166,0.15);
+}
+
+/* آواتار با حرف اول اسم (بدون عکس) */
+.avatar-placeholder {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #23a6a6, #198f8f);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(35,166,166,0.3);
+  border: 2.5px solid rgba(255,255,255,0.9);
+}
+
+.username {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-arrow {
+  color: var(--muted);
+  transition: transform 0.25s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  min-width: 210px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 45px rgba(8,51,68,0.14);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition);
+  z-index: 999;
+  overflow: hidden;
+  border: 1px solid rgba(8,51,68,0.06);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.85rem 1.2rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background: #f0fdfc;
+  color: var(--accent-dark);
+}
+
+.dropdown-menu hr {
+  margin: 0.5rem 0;
+  border: none;
+  border-top: 1px solid rgba(8,51,68,0.08);
+}
+
+.dropdown-menu .logout {
+  color: #e74c3c !important;
+}
+
+.dropdown-menu .logout:hover {
+  background: #ffeaea !important;
+}
+
+/* وقتی باز شد */
+.user-menu.active .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-menu.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* دکمه Login وقتی لاگین نیست */
+.btn-login {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
+  color: white !important;
+  padding: 0.6rem 1.3rem !important;
+  border-radius: 50px !important;
+  font-weight: 600;
+  box-shadow: 0 8px 22px rgba(35,166,166,0.18);
+  transition: var(--transition);
+}
+
+.btn-login:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(35,166,166,0.24);
+}

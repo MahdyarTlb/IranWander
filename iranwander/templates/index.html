@@ -15,7 +15,7 @@
 <header class="header container">
     <nav class="nav">
         <div class="logo">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo" />
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo" loading="lazy" decoding="async"/>
             <h1>Iran Wander</h1>
         </div>
         <ul class="nav-links">
@@ -23,7 +23,30 @@
             <li><a href="{{ url_for('city.list_cities') }}">Cities</a></li>
             <li><a href="#">Stories</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% if current_user.is_authenticated %}
+    <li class="user-menu">
+        <div class="user-avatar-dropdown">
+            <button class="avatar-btn" id="avatarBtn">
+                <div class="avatar-placeholder" data-username="{{ current_user.username }}">
+                    {{ current_user.username[:1]|upper }}
+                </div>
+                <span class="username">{{ current_user.username }}</span>
+                <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="{{ url_for('user.panel') }}">my profile</a>
+                <a href="{{ url_for('user.panel') }}">favorites</a>
+                <hr>
+                <a href="{{ url_for('user.logout') }}" class="logout">Logout</a>
+            </div>
+        </div>
+    </li>
+{% else %}
+    <li><a href="{{ url_for('auth.login') }}" class="btn-login">Login</a></li>
+{% endif %}
         </ul>
     </nav>
 
@@ -45,9 +68,9 @@
 
         {# HERO IMAGES #}
         <div class="hero-images">
-            <img src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iranian Nature" />
-            <img src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iranian Landscape" />
-            <img src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Cultural Site" />
+            <img src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iranian Nature" loading="lazy" decoding="async"/>
+            <img src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iranian Landscape" loading="lazy" decoding="async"/>
+            <img src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Cultural Site" loading="lazy" decoding="async"/>
         </div>
     </div>
 </header>
@@ -66,22 +89,22 @@
     <h2>Top Destinations</h2>
     <div class="destination-grid">
         <div class="card">
-            <img src="{{ url_for('static', filename='img/topdestimain1.jpg') }}" alt="Persepolis" />
+            <img src="{{ url_for('static', filename='img/topdestimain1.jpg') }}" alt="Persepolis" loading="lazy" decoding="async"/>
             <h3>Persepolis</h3>
             <p>Fars Province</p>
         </div>
         <div class="card">
-            <img src="{{ url_for('static', filename='img/topdestimain2.jpeg') }}" alt="Naqsh-e Jahan Square" />
+            <img src="{{ url_for('static', filename='img/topdestimain2.jpeg') }}" alt="Naqsh-e Jahan Square" loading="lazy" decoding="async"/>
             <h3>Naqsh-e Jahan Square</h3>
             <p>Isfahan</p>
         </div>
         <div class="card">
-            <img src="{{ url_for('static', filename='img/ferdosi2.jpg') }}" alt="Ferdowsi's Tomb" />
+            <img src="{{ url_for('static', filename='img/ferdosi2.jpg') }}" alt="Ferdowsi's Tomb" loading="lazy" decoding="async"/>
             <h3>Ferdowsi's Tomb</h3>
             <p>Mashhad</p>
         </div>
         <div class="card">
-            <img src="{{ url_for('static', filename='img/milad3.jpg') }}" alt="Milad Tower" />
+            <img src="{{ url_for('static', filename='img/milad3.jpg') }}" alt="Milad Tower" loading="lazy" decoding="async"/>
             <h3>Milad Tower</h3>
             <p>Tehran</p>
         </div>
@@ -93,7 +116,7 @@
     <h2>Latest Stories</h2>
     <div class="stories-grid">
         <div class="story">
-            <img src="{{ url_for('static', filename='img/persepolisheader.jpg') }}" alt="Gate of All Nations" />
+            <img src="{{ url_for('static', filename='img/persepolisheader.jpg') }}" alt="Gate of All Nations" loading="lazy" decoding="async"/>
             <div class="story-content">
                 <h3>Passing Through the Gate of All Nations</h3>
                 <p>
@@ -103,7 +126,7 @@
             </div>
         </div>
         <div class="story">
-            <img src="{{ url_for('static', filename='img/storymain.jpg') }}" alt="Isfahan Bazaar" />
+            <img src="{{ url_for('static', filename='img/storymain.jpg') }}" alt="Isfahan Bazaar" loading="lazy" decoding="async"/>
             <div class="story-content">
                 <h3>The Grand Bazaar of Isfahan</h3>
                 <p>
@@ -119,10 +142,10 @@
     <h2>Traveler Highlights</h2>
     <div class="highlights-layout">
         <div class="highlight-content">
-            <img src="{{ url_for('static', filename='img/jangalmain.png') }}" alt="Forest" />
-            <img src="{{ url_for('static', filename='img/biabanmain.png') }}" alt="Desert" />
-            <img src="{{ url_for('static', filename='img/bazarmain.png') }}" alt="Bazaar" />
-            <img src="{{ url_for('static', filename='img/tarikhmain.png') }}" alt="Historical Site" />
+            <img src="{{ url_for('static', filename='img/jangalmain.png') }}" alt="Forest" loading="lazy" decoding="async"/>
+            <img src="{{ url_for('static', filename='img/biabanmain.png') }}" alt="Desert" loading="lazy" decoding="async"/>
+            <img src="{{ url_for('static', filename='img/bazarmain.png') }}" alt="Bazaar" loading="lazy" decoding="async"/>
+            <img src="{{ url_for('static', filename='img/tarikhmain.png') }}" alt="Historical Site" loading="lazy" decoding="async"/>
         </div>
         <div class="highlight-text">
             <h3>A Journey Through Ancient Persia</h3>

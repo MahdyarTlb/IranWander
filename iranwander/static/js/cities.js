@@ -1,5 +1,4 @@
 const cityData = {
-  // 💡 نکته: نام شهرها باید دقیقاً با City.name در دیتابیس مطابقت داشته باشد
   Tehran: {
     attractions: [
       // 👈 آدرس‌های اصلاح شده
@@ -33,6 +32,7 @@ const cityData = {
   },
 };
 
+// اول: کد مودال و دکمه‌ها (همون قبلی، دست نخورده!)
 const buttons = document.querySelectorAll(".btn");
 const overlay = document.getElementById("overlay");
 const modal = document.getElementById("modal");
@@ -40,9 +40,13 @@ const modalContent = document.getElementById("modal-content");
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
+    // فقط اگه رو قلب کلیک شده بود، مودال باز نشه
+    if (e.target.closest(".like-icon")) {
+      return; // اجازه بده فقط لایک انجام بشه
+    }
+
     e.preventDefault();
 
-    // 👈 از textContent.trim() استفاده کنید تا نام شهر بدون فاصله اضافی گرفته شود
     const cityName = btn.parentElement.querySelector("h3").textContent.trim();
     const cityInfo = cityData[cityName];
 
@@ -70,8 +74,39 @@ overlay.addEventListener("click", () => {
   modal.classList.add("hidden");
 });
 
+// دوم: لایک واقعی + بدون خراب کردن مودال
 document.querySelectorAll(".like-icon").forEach((icon) => {
-  icon.addEventListener("click", () => {
-    icon.classList.toggle("liked");
+  icon.addEventListener("click", async function (e) {
+    e.stopPropagation(); // فقط جلوی باز شدن مودال رو بگیره
+
+    const cityId = this.getAttribute("data-city-id");
+    if (!cityId) return;
+
+    // لودینگ خفن
+    const originalStroke = this.style.stroke || "";
+    this.style.opacity = "0.6";
+    this.style.pointerEvents = "none";
+
+    try {
+      const response = await fetch("/api/like", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ city_id: parseInt(cityId) }),
+      });
+
+      const data = await response.json();
+
+      if (data.ok) {
+        this.classList.toggle("liked");
+      } else {
+        alert("Error: " + (data.error || "Try again"));
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Connection error!");
+    } finally {
+      this.style.opacity = "1";
+      this.style.pointerEvents = "auto";
+    }
   });
 });

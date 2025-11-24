@@ -8,7 +8,7 @@
 
 <!-- HERO SECTION -->
 <section class="hero">
-    <img src="{{ url_for('static', filename='img/' + attraction.image) }}" alt="{{ attraction.name }} Header">
+    <img src="{{ url_for('static', filename='img/' + attraction.image) }}" alt="{{ attraction.name }} Header" loading="lazy" decoding="async">
 </section>
 
 <!-- INFO SECTION -->
@@ -32,7 +32,7 @@
     <!-- RIGHT SIDE: GALLERY -->
     <div class="gallery">
         {% for image_name in attraction.gallery_images.split(',') %}
-        <img src="{{ url_for('static', filename='img/' + image_name | trim) }}" alt="{{ attraction.name }} Image">
+        <img src="{{ url_for('static', filename='img/' + image_name | trim) }}" alt="{{ attraction.name }} Image" loading="lazy" decoding="async">
         {% endfor %}
     </div>
 
