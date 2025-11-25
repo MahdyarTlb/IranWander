@@ -10,6 +10,8 @@ The goal: deliver a **real-world quality** app that demonstrates CS50-level mast
 ## Live Demo
 ToDo
 
+## Shots
+![01](static/img/readme/01.png)
 ## Key Features
 - Public browsing of cities and attractions with beautiful, responsive cards
 - User authentication (register, login, logout, password reset via email)
@@ -87,4 +89,4 @@ This is not just a CS50 project — it's a real, deployable, production-ready fo
 
 _**Made with love in Iran
 
-[Mahdyar Talebi](linkedin.com/in/mahdyar-tlb), Ali Arezoomandi, Komeil AhanKobi — CS50x 2025**_
+[Mahdyar Talebi](https://linkedin.com/in/mahdyar-tlb), Ali Arezoomandi, Komeil AhanKobi — CS50x 2025**_
