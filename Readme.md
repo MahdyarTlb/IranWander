@@ -11,7 +11,10 @@ The goal: deliver a **real-world quality** app that demonstrates CS50-level mast
 ToDo
 
 ## Shots
-![01](static/img/readme/01.png)
+![HomePage](readme/01.png)
+![Cities](readme/02.png)
+![panel](readme/03.png)
+
 ## Key Features
 - Public browsing of cities and attractions with beautiful, responsive cards
 - User authentication (register, login, logout, password reset via email)
