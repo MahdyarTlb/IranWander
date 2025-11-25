@@ -50,37 +50,71 @@
         </ul>
     </nav>
 
-    <div class="search-bar">
-        <input type="text" placeholder="Search destinations..." />
-        <button>Search</button>
-    </div>
+    <div class="hero-search">
+    <div class="search-container">
+        <div class="search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                <path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
+            </svg>
 
-    <div class="hero">
-        <div class="hero-text">
-            <h2>Discover Iran’s Hidden Wonders</h2>
-            <p>Explore the heart of Iran, from ancient ruins to breathtaking landscapes. Uncover the timeless stories
-                that shaped civilization.</p>
-            {# Random search button, likely needs JS functionality #}
-            <button class="btn-primary" id="random-trip-btn">
-                Find Your Next Adventure
+            <input
+                type="text"
+                id="heroSearch"
+                placeholder="search anything"
+                autocomplete="off"
+                spellcheck="false">
+
+            <button type="submit" class="search-btn">
+                <span>Search</span>
+                <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </button>
         </div>
 
-        {# HERO IMAGES #}
+        <div class="search-suggestions" id="suggestions"></div>
+    </div>
+</div>
+
+    <div class="hero-section">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Discover Iran’s <span>Hidden Wonders</span>
+            </h1>
+            <p class="hero-subtitle">
+                from Kavir-Loot to Si-O-Se-Pol waiting for you
+            </p>
+            <button class="random-btn" id="random-trip-btn">
+                <span class="btn-text">Find Your Next Adventure</span>
+                <svg class="sparkle" viewBox="0 0 24 24">
+                    <path d="M14.187 8.096L15 5l.813 3.096C18.61 9.29 20.71 11.39 21.904 14.187L19 15l-3.096.813C14.71 18.61 12.61 20.71 9.813 21.904L9 19l.813-3.096C7.015 14.71 4.915 12.61 3.721 9.813L6.5 9 3.721 8.187C4.915 5.39 7.015 3.29 9.813 2.096L9 5l.813 3.096C12.61 7.015 14.71 9.115 15.904 11.912L14.187 8.096z"/>
+                </svg>
+            </button>
+        </div>
+
         <div class="hero-images">
-            <img src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iranian Nature" loading="lazy" decoding="async"/>
-            <img src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iranian Landscape" loading="lazy" decoding="async"/>
-            <img src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Cultural Site" loading="lazy" decoding="async"/>
+            <img src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iran Nature" class="img-1" loading="lazy">
+            <img src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iran Landscape" class="img-2" loading="lazy">
+            <img src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Iran Culture" class="img-3" loading="lazy">
         </div>
     </div>
-</header>
 
-{# POPUP (For the random trip button) #}
-<div id="random-popup" class="popup hidden">
-    <div class="popup-content">
-        <h3>Your Random Destination 🌍</h3>
-        <p id="random-destination"></p>
-        <button id="close-popup">Close</button>
+    <div id="random-popup" class="random-popup">
+        <div class="popup-glass">
+            <div class="popup-header">
+                <h3>Your Random Destination</h3>
+                <button class="close-popup" id="close-popup">×</button>
+            </div>
+            <div class="popup-body">
+                <p class="destination-name" id="random-destination"></p>
+                <p class="destination-hint">are you prepare?</p>
+            </div>
+            <div class="popup-footer">
+                <a href="#" id="go-to-city" class="go-btn">go there</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -160,11 +194,20 @@
 
 <section class="newsletter">
     <div class="newsletter-box container">
-        <h2>Get Travel Inspiration Straight to Your Inbox</h2>
-        <p>Subscribe for stories, guides, and destination insights.</p>
-        <form class="newsletter-form" method="POST" action="#">
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit" class="btn-primary">Subscribe</button>
+        <div class="newsletter-content">
+            <h2>Get Travel Inspiration Straight to Your Inbox</h2>
+            <p>Subscribe for stories, guides, and destination insights.</p>
+        </div>
+
+        <form class="newsletter-form" id="newsletterForm">
+            <div class="input-group">
+                <input type="email" id="emailInput" placeholder="email" required />
+                <button type="submit" class="btn-subscribe">
+                    <span class="text">join</span>
+                    <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="form-message" id="formMessage"></div>
         </form>
     </div>
 </section>
