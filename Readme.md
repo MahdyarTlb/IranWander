@@ -11,8 +11,11 @@ The goal: deliver a **real-world quality** app that demonstrates CS50-level mast
 ToDo
 
 ## Shots
+HomePage
 ![HomePage](readme/01.png)
+Cities
 ![Cities](readme/02.png)
+User panel
 ![panel](readme/03.png)
 
 ## Key Features
