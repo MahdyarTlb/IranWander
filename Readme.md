@@ -54,12 +54,12 @@ python -m venv venv
 source venv/bin/activate    # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-# Set environment variables
+### Set environment variables
 export FLASK_APP=run.py
 export FLASK_ENV=development
 export SECRET_KEY="your-super-secret-key-here"
 
-# Run!
+### Run!
 flask run
 Open http://127.0.0.1:5000`
 
@@ -86,4 +86,5 @@ It proves that you don’t need heavy frameworks to build beautiful, secure, and
 This is not just a CS50 project — it's a real, deployable, production-ready foundation.
 
 _**Made with love in Iran
-[Mahdyar Talebi](linkedin.com/in/mahdyar-tlb) — CS50x 2025**_
+
+[Mahdyar Talebi](linkedin.com/in/mahdyar-tlb), Ali Arezoomandi, Komeil AhanKobi — CS50x 2025**_
