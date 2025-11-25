@@ -1,4 +1,3 @@
-/* cities-pro.css — رویایی، مدرن، شیشه‌ای، انیمیشن‌دار */
 :root {
     --primary: #667eea;
     --accent: #ffffff;
@@ -200,7 +199,6 @@ body {
     scrollbar-color: rgba(255,255,255,0.4) transparent;
 }
 
-/* اسکرول‌بار خفن برای مرورگرهای کروم */
 .modal-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -212,7 +210,6 @@ body {
     border-radius: 10px;
 }
 
-/* کارت جاذبه‌ها داخل مودال */
 .attraction-card {
     background: rgba(255, 255, 255, 0.22);
     border-radius: 26px;
@@ -261,7 +258,6 @@ body {
     transform: translateY(-4px);
 }
 
-/* حالت وقتی نتیجه نیست */
 .no-results {
     grid-column: 1 / -1;
     text-align: center;

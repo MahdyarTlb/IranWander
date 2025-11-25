@@ -1,4 +1,3 @@
-// cities.js — نسخه نهایی، کامل، بدون باگ، با لایک و مودال رویایی
 const cityData = {
   Tehran: {
     attractions: [
@@ -30,7 +29,6 @@ const cityData = {
       { title: "Ferdosi Mausoleum", img: "/static/img/ferdosimodal.jpg", link: "/city/Ferdosi-Mausoleum" },
     ],
   },
-  // اگه شهر دیگه‌ای اضافه کردی، اینجا بذار
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -39,10 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("modal");
   const modalContent = document.getElementById("modal-content");
 
-  // باز کردن مودال
   buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      // اگه روی قلب لایک کلیک کرد، مودال باز نشه
       if (e.target.closest(".like-icon")) return;
 
       e.preventDefault();
@@ -55,12 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // پر کردن محتوای مودال
       modalContent.innerHTML = cityInfo.attractions
         .map(
           (a) => `
             <div class="attraction-card">
-                <img src="${a.img}" alt="${a.title}" loading="lazy">
+                <img loading="lazy" decoding="async" src="${a.img}" alt="${a.title}" loading="lazy">
                 <h4>${a.title}</h4>
                 <a class="more-btn" href="${a.link}">More Info</a>
             </div>
@@ -68,19 +63,16 @@ document.addEventListener("DOMContentLoaded", function () {
         )
         .join("");
 
-      // نمایش مودال (اینجا باید add کنیم، نه remove!)
       overlay.classList.add("active");
       modal.classList.add("active");
     });
   });
 
-  // بستن مودال با کلیک روی پس‌زمینه
   overlay.addEventListener("click", () => {
     overlay.classList.remove("active");
     modal.classList.remove("active");
   });
 
-  // بستن با کلید Esc
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       overlay.classList.remove("active");
@@ -88,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // لایک واقعی (همون کد قبلی، بدون تغییر — کاملاً درست کار می‌کنه)
   document.querySelectorAll(".like-icon").forEach((icon) => {
     icon.addEventListener("click", async function (e) {
       e.stopPropagation(); // جلوی باز شدن مودال رو بگیره
@@ -96,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const cityId = this.getAttribute("data-city-id");
       if (!cityId) return;
 
-      // لودینگ
       this.style.opacity = "0.6";
       this.style.pointerEvents = "none";
 
@@ -125,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// search bar
 const popularCities = [
     "Tehran", "Isfahan", "Shiraz", "Mashhad", "Karaj"];
 

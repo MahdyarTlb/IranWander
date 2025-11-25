@@ -77,7 +77,7 @@
     {% if cities %}
         {% for city in cities %}
         <div class="card">
-            <img src="{{ url_for('static', filename='img/' + city.image) }}"
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/' + city.image) }}"
                  alt="{{ city.name }}" loading="lazy" decoding="async">
 
             <div class="info">
@@ -113,5 +113,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{{ url_for('static', filename='js/cities.js') }}?v=2"></script>
+<script defer src="{{ url_for('static', filename='js/cities.js') }}?v=2"></script>
 {% endblock %}

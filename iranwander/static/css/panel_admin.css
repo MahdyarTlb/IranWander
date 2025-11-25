@@ -70,7 +70,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* حالت موبایل */
 @media (max-width: 480px) {
     .favorites-grid {
         grid-template-columns: 1fr;
@@ -100,14 +99,14 @@ body {
 
 .favorite-image {
     position: relative;
-    height: 180px;                    /* ارتفاع ثابت و عالی */
+    height: 180px;                  
     overflow: hidden;
 }
 
 .favorite-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;                /* این مهمه! عکس کش نیاد */
+    object-fit: cover;              
     object-position: center;
     transition: transform 0.7s ease;
 }

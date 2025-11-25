@@ -6,7 +6,6 @@
     <title>Iran Wander | My Account</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">-->
 
     <style>
         :root {
@@ -35,7 +34,6 @@
             padding: 2rem 1rem;
         }
 
-        /* Header */
         .header {
             background: var(--bg-glass);
             backdrop-filter: blur(16px);
@@ -63,7 +61,7 @@
         }
 
         .user-greeting {
-            color: white;
+            color: #083344;
             font-weight: 600;
             font-size: 1.1rem;
         }
@@ -87,7 +85,6 @@
             box-shadow: 0 14px 28px rgba(231, 76, 60, 0.4);
         }
 
-        /* Dashboard Grid */
         .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -124,7 +121,6 @@
             font-weight: 700;
         }
 
-        /* Profile Card */
         .profile-card {
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             color: white;
@@ -147,7 +143,6 @@
             border: 4px solid rgba(255,255,255,0.3);
         }
 
-        /* Liked Cities */
         .city-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -225,7 +220,6 @@
             opacity: 0.7;
         }
 
-        /* Forms */
         .form-group {
             margin-bottom: 1.2rem;
         }
@@ -274,6 +268,27 @@
             display: block;
         }
 
+        .city-name-link{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .btn-remove{
+            color: #083344;
+            background: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            width: 100%;
+            margin: 1rem;
+            font-weight: 700;
+        }
+
         @media (max-width: 768px) {
             .header { flex-direction: column; text-align: center; gap: 1rem; }
             .dashboard { grid-template-columns: 1fr; }
@@ -284,7 +299,6 @@
 
 <div class="container">
 
-    <!-- Header -->
     <div class="header">
         <h1>My Account</h1>
         <div style="display: flex; align-items: center; gap: 1rem;">
@@ -297,7 +311,6 @@
 
     <div class="dashboard">
 
-        <!-- Profile Card -->
         <div class="card profile-card">
             <div class="avatar-big" data-username="{{ current_user.username }}">
                 {{ current_user.username[:1]|upper }}
@@ -308,7 +321,6 @@
             <p><strong>Member since:</strong> 2025</p>
         </div>
 
-        <!-- Change Password -->
         <div class="card">
             <h2>Change Password</h2>
             <form method="POST" action="{{ url_for('user.change_password') }}">
@@ -322,36 +334,35 @@
             </form>
         </div>
 
-<!-- بخش شهرهای مورد علاقه — نسخه لیست خفن و مینیمال -->
-<div class="favorites-section">
-    <h2>Your Favorite Cities</h2>
+        <div class="card profile-card">
+            <h2>Your Favorite Cities</h2>
 
-    {% if current_user.favorites|length > 0 %}
-        <div class="favorites-list">
-            {% for city in current_user.favorites %}
-            <div class="favorite-row">
-                <div class="city-title">
-                    <span class="bullet"></span>
-                    <a href="{{ url_for('city.list_cities', id=city.id) }}" class="city-name-link">
-                        {{ city.name }}
-                    </a>
-                </div>
+            {% if current_user.favorites|length > 0 %}
+                <div class="favorites-list">
+                    {% for city in current_user.favorites %}
+                    <div class="favorite-row">
+                        <div class="city-title">
+                            <span class="bullet"></span>
+                            <a href="{{ url_for('city.list_cities', id=city.id) }}" class="city-name-link">
+                                {{ city.name }}
+                            </a>
+                        </div>
 
-                <div class="actions">
-                    <button class="btn-remove" onclick="unlikeCity({{ city.id }})" title="Remove">
-                        Remove
-                    </button>
+                        <div class="actions">
+                            <button class="btn-remove" onclick="unlikeCity({{ city.id }})" title="Remove">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-            </div>
-            {% endfor %}
+            {% else %}
+                <div class="no-likes">
+                    <p>You haven't saved any cities yet!</p>
+                    <small>Start exploring and tap the heart to save your favorites</small>
+                </div>
+            {% endif %}
         </div>
-    {% else %}
-        <div class="no-likes">
-            <p>You haven't saved any cities yet!</p>
-            <small>Start exploring and tap the heart to save your favorites</small>
-        </div>
-    {% endif %}
-</div>
 
     </div>
 
@@ -362,8 +373,7 @@
     </div>
 </div>
 
-<script>
-    // همون کد قبلی unlike + آواتار رنگی
+<script defer>
     async function unlikeCity(cityId) {
         if (!confirm('Remove this city from your favorites?')) return;
 
@@ -381,7 +391,6 @@
         }
     }
 
-    // آواتار بزرگ رنگی (همون کد قبلی)
     document.addEventListener('DOMContentLoaded', () => {
         const avatar = document.querySelector('.avatar-big[data-username]');
         if (avatar) {

@@ -120,7 +120,6 @@ body{
 }
 
 
-/* ==== Popup Random Destination ==== */
 .popup {
   position: fixed;
   top: 0;
@@ -239,7 +238,6 @@ body{
     background-size: 2000px;
     opacity: 0.04;
     pointer-events: none;
-    /*background: linear-gradient(135deg, #134e4a 0%, #065f5f 40%, #0f5132 100%);*/
 }
 
 .hero-container {
@@ -340,7 +338,6 @@ body{
 .img-2 { width: 340px; height: 240px; bottom: 50px; right: 20px; transform: rotate(6deg); }
 .img-3 { width: 360px; height: 260px; top: 180px; left: 0; transform: rotate(-4deg); }
 
-/* پاپ‌آپ رویایی */
 .random-popup {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -693,7 +690,6 @@ body{
 .mb-1{ margin-bottom:1rem }
 .p-1{ padding:1rem }
 
-/* ==== USER AVATAR DROPDOWN - لالیگا ورژن ==== */
 .user-menu {
   position: relative;
   list-style: none;
@@ -725,7 +721,6 @@ body{
   box-shadow: 0 10px 25px rgba(35,166,166,0.15);
 }
 
-/* آواتار با حرف اول اسم (بدون عکس) */
 .avatar-placeholder {
   width: 38px;
   height: 38px;
@@ -799,7 +794,6 @@ body{
   background: #ffeaea !important;
 }
 
-/* وقتی باز شد */
 .user-menu.active .dropdown-menu {
   opacity: 1;
   visibility: visible;

@@ -6,14 +6,12 @@ from flask_migrate import Migrate
 from config import Config
 import os
 
-# make database
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
 mail = Mail()
 
 def create_app(config_name=Config):
-    # static files are two step upper than current dir
     app = Flask(
         __name__,
         template_folder=os.path.join(os.path.dirname(__file__), 'templates'),

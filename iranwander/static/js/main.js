@@ -1,12 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // ==================================================================
-    // city lists
-    // ==================================================================
+
     const allCities = ["Tehran", "Isfahan", "Shiraz", "Mashhad", "Karaj"];
 
-    // ==================================================================
-    // make random destination
-    // ==================================================================
     const randomBtn = document.getElementById("random-trip-btn");
     const popup = document.getElementById("random-popup");
     const destinationText = document.getElementById("random-destination");
@@ -34,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-    // ==================================================================
-    // live search
-    // ==================================================================
+
     const popularCities = ["Tehran", "Isfahan", "Shiraz", "Mashhad", "Karaj", "Yazd", "Tabriz"];
     const searchInput = document.getElementById("heroSearch");
     const suggestionsBox = document.getElementById("suggestions");
@@ -95,15 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ==================================================================
-    // User panel + Dropdown
-    // ==================================================================
     window.onload = function() {
     const avatarBtn = document.getElementById("avatarBtn");
     const userMenu = document.querySelector(".user-menu");
     const dropdown = document.getElementById("dropdownMenu");
 
-    console.log("avatarBtn:", avatarBtn); // تست حیاتی
+    console.log("avatarBtn:", avatarBtn); 
 
     if (!avatarBtn) {
         console.error("avatarBtn NOT FOUND!");
@@ -132,11 +122,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 };
 
-
-
-    // ==================================================================
-    // Colorful Avatar
-    // ==================================================================
     const avatar = document.querySelector(".avatar-placeholder[data-username]");
     if (avatar) {
         const username = avatar.getAttribute("data-username") || "A";
@@ -162,9 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
         avatar.style.background = `linear-gradient(135deg, ${colorPair[0]}, ${colorPair[1]})`;
     }
 });
-    // ==================================================================
-    // email sender
-    // ==================================================================
+
     document.getElementById("newsletterForm")?.addEventListener("submit", async function(e) {
     e.preventDefault();
 

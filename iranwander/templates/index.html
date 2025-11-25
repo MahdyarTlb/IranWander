@@ -15,7 +15,7 @@
 <header class="header container">
     <nav class="nav">
         <div class="logo">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo" loading="lazy" decoding="async"/>
             <h1>Iran Wander</h1>
         </div>
         <ul class="nav-links">
@@ -95,9 +95,9 @@
         </div>
 
         <div class="hero-images">
-            <img src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iran Nature" class="img-1" loading="lazy">
-            <img src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iran Landscape" class="img-2" loading="lazy">
-            <img src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Iran Culture" class="img-3" loading="lazy">
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iran Nature" class="img-1" loading="lazy">
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iran Landscape" class="img-2" loading="lazy">
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Iran Culture" class="img-3" loading="lazy">
         </div>
     </div>
 
@@ -123,22 +123,22 @@
     <h2>Top Destinations</h2>
     <div class="destination-grid">
         <div class="card">
-            <img src="{{ url_for('static', filename='img/topdestimain1.jpg') }}" alt="Persepolis" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain1.jpg') }}" alt="Persepolis" loading="lazy" decoding="async"/>
             <h3>Persepolis</h3>
             <p>Fars Province</p>
         </div>
         <div class="card">
-            <img src="{{ url_for('static', filename='img/topdestimain2.jpeg') }}" alt="Naqsh-e Jahan Square" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain2.jpeg') }}" alt="Naqsh-e Jahan Square" loading="lazy" decoding="async"/>
             <h3>Naqsh-e Jahan Square</h3>
             <p>Isfahan</p>
         </div>
         <div class="card">
-            <img src="{{ url_for('static', filename='img/ferdosi2.jpg') }}" alt="Ferdowsi's Tomb" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/ferdosi2.jpg') }}" alt="Ferdowsi's Tomb" loading="lazy" decoding="async"/>
             <h3>Ferdowsi's Tomb</h3>
             <p>Mashhad</p>
         </div>
         <div class="card">
-            <img src="{{ url_for('static', filename='img/milad3.jpg') }}" alt="Milad Tower" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/milad3.jpg') }}" alt="Milad Tower" loading="lazy" decoding="async"/>
             <h3>Milad Tower</h3>
             <p>Tehran</p>
         </div>
@@ -150,7 +150,7 @@
     <h2>Latest Stories</h2>
     <div class="stories-grid">
         <div class="story">
-            <img src="{{ url_for('static', filename='img/persepolisheader.jpg') }}" alt="Gate of All Nations" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/persepolisheader.jpg') }}" alt="Gate of All Nations" loading="lazy" decoding="async"/>
             <div class="story-content">
                 <h3>Passing Through the Gate of All Nations</h3>
                 <p>
@@ -160,7 +160,7 @@
             </div>
         </div>
         <div class="story">
-            <img src="{{ url_for('static', filename='img/storymain.jpg') }}" alt="Isfahan Bazaar" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/storymain.jpg') }}" alt="Isfahan Bazaar" loading="lazy" decoding="async"/>
             <div class="story-content">
                 <h3>The Grand Bazaar of Isfahan</h3>
                 <p>
@@ -176,10 +176,10 @@
     <h2>Traveler Highlights</h2>
     <div class="highlights-layout">
         <div class="highlight-content">
-            <img src="{{ url_for('static', filename='img/jangalmain.png') }}" alt="Forest" loading="lazy" decoding="async"/>
-            <img src="{{ url_for('static', filename='img/biabanmain.png') }}" alt="Desert" loading="lazy" decoding="async"/>
-            <img src="{{ url_for('static', filename='img/bazarmain.png') }}" alt="Bazaar" loading="lazy" decoding="async"/>
-            <img src="{{ url_for('static', filename='img/tarikhmain.png') }}" alt="Historical Site" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/jangalmain.png') }}" alt="Forest" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/biabanmain.png') }}" alt="Desert" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/bazarmain.png') }}" alt="Bazaar" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/tarikhmain.png') }}" alt="Historical Site" loading="lazy" decoding="async"/>
         </div>
         <div class="highlight-text">
             <h3>A Journey Through Ancient Persia</h3>
@@ -229,7 +229,7 @@
 
 {# Linking the main JavaScript file #}
 {% block extra_js %}
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
 
 {% endblock content %}

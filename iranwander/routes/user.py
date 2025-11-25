@@ -8,7 +8,6 @@ user_bp = Blueprint('user', __name__, url_prefix='/user')
 @user_bp.route('/panel')
 @login_required
 def panel():
-    ## liked = current_user.favorites
     return render_template('panel_admin.html', current_user=current_user)
 
 

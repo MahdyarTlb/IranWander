@@ -22,12 +22,10 @@ def forget_password():
         user = User.query.filter_by(email=email).first()
 
         if user:
-            # رمز جدید بساز
             new_password = generate_random_password(12)
-            user.set_password(new_password)  # هش میشه
+            user.set_password(new_password)  
             db.session.commit()
 
-            # ایمیل بفرست
             msg = Message(
                 subject="Iran Wander - Your New Password",
                 sender="no-reply@iranwander.ir",

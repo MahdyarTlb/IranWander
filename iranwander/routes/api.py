@@ -43,11 +43,9 @@ def toggle_like():
         return jsonify({'ok': False, 'error': 'city not found'}), 404
 
     if city in current_user.favorites:
-        # remove
         current_user.favorites.remove(city)
         action = 'unliked'
     else:
-        # add
         current_user.favorites.append(city)
         action = 'liked'
 
