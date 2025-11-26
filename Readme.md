@@ -14,7 +14,7 @@ ToDo
 
 ## Shots
 
-HomePage ![HomePage](readme/01.webp) Cities ![Cities](readme/02.webp) User panel ![panel](readme/03.webp)
+HomePage ![HomePage](readme/01.png) Cities ![Cities](readme/02.png) User panel ![panel](readme/03.png)
 
 ## Key Features
 
