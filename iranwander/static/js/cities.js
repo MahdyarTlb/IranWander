@@ -1,32 +1,32 @@
 const cityData = {
   Tehran: {
     attractions: [
-      { title: "Milad Tower", img: "/static/img/miladmodal.jpg", link: "/city/Milad-Tower" },
-      { title: "Golestan Palace", img: "/static/img/golestanmodal.jpg", link: "/city/Golestan-Palace" },
+      { title: "Milad Tower", img: "/static/img/miladmodal.webp", link: "/city/Milad-Tower" },
+      { title: "Golestan Palace", img: "/static/img/golestanmodal.webp", link: "/city/Golestan-Palace" },
     ],
   },
   Isfahan: {
     attractions: [
-      { title: "Naqsh-e Jahan Square", img: "/static/img/naqshemodal.jpg", link: "/city/Naqsh-e-Jahan-Square" },
-      { title: "Si-o-se-pol Bridge", img: "/static/img/Si-o-se-polmodal.jpg", link: "/city/Si-o-se-pol-Bridge" },
+      { title: "Naqsh-e Jahan Square", img: "/static/img/naqshemodal.webp", link: "/city/Naqsh-e-Jahan-Square" },
+      { title: "Si-o-se-pol Bridge", img: "/static/img/Si-o-se-polmodal.webp", link: "/city/Si-o-se-pol-Bridge" },
     ],
   },
   Shiraz: {
     attractions: [
-      { title: "Hafez Mausoleum", img: "/static/img/hafezmodal.jpg", link: "/city/Hafez-Mausoleum" },
-      { title: "Persepolis", img: "/static/img/jamshidmodal.jpg", link: "/city/Persepolis" },
+      { title: "Hafez Mausoleum", img: "/static/img/hafezmodal.webp", link: "/city/Hafez-Mausoleum" },
+      { title: "Persepolis", img: "/static/img/jamshidmodal.webp", link: "/city/Persepolis" },
     ],
   },
   Karaj: {
     attractions: [
-      { title: "Chamran Park", img: "/static/img/chamranmodal.jpg", link: "/city/Chamran-Park" },
-      { title: "Little Iran Park", img: "/static/img/littleiranmodal.jpg", link: "/city/Little-Iran-Park" },
+      { title: "Chamran Park", img: "/static/img/chamranmodal.webp", link: "/city/Chamran-Park" },
+      { title: "Little Iran Park", img: "/static/img/littleiranmodal.webp", link: "/city/Little-Iran-Park" },
     ],
   },
   Mashhad: {
     attractions: [
-      { title: "Imam Reza Shrine", img: "/static/img/emammodal.jpg", link: "/city/Imam-Reza-Shrine" },
-      { title: "Ferdosi Mausoleum", img: "/static/img/ferdosimodal.jpg", link: "/city/Ferdosi-Mausoleum" },
+      { title: "Imam Reza Shrine", img: "/static/img/emammodal.webp", link: "/city/Imam-Reza-Shrine" },
+      { title: "Ferdosi Mausoleum", img: "/static/img/ferdosimodal.webp", link: "/city/Ferdosi-Mausoleum" },
     ],
   },
 };
@@ -115,30 +115,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const popularCities = [
-    "Tehran", "Isfahan", "Shiraz", "Mashhad", "Karaj"];
+const popularCities = ["Tehran", "Isfahan", "Shiraz", "Mashhad", "Karaj"];
 
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('heroSearch');
-    const suggestionsBox = document.getElementById('suggestions');
-    const searchBtn = document.querySelector('.search-btn');
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.getElementById("heroSearch");
+  const suggestionsBox = document.getElementById("suggestions");
+  const searchBtn = document.querySelector(".search-btn");
 
-    if (!searchInput || !suggestionsBox) return;
+  if (!searchInput || !suggestionsBox) return;
 
-    searchInput.addEventListener('input', function() {
-        const query = this.value.trim();
+  searchInput.addEventListener("input", function () {
+    const query = this.value.trim();
 
-        if (query.length === 0) {
-            suggestionsBox.classList.remove('active');
-            suggestionsBox.innerHTML = '';
-            return;
-        }
+    if (query.length === 0) {
+      suggestionsBox.classList.remove("active");
+      suggestionsBox.innerHTML = "";
+      return;
+    }
 
-        const matches = popularCities
-            .filter(city => city.toLowerCase().includes(query.toLowerCase()))
-            .slice(0, 6);
-        if (matches.length > 0) {
-            suggestionsBox.innerHTML = matches.map(city => `
+    const matches = popularCities.filter((city) => city.toLowerCase().includes(query.toLowerCase())).slice(0, 6);
+    if (matches.length > 0) {
+      suggestionsBox.innerHTML = matches
+        .map(
+          (city) => `
                 <div class="suggestion-item" data-city="${city}">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="11" cy="11" r="8"/>
@@ -146,36 +145,44 @@ document.addEventListener('DOMContentLoaded', function() {
                     </svg>
                     <span>City <strong>${city}</strong></span>
                 </div>
-            `).join('');
-            suggestionsBox.classList.add('active');
-        } else {
-            suggestionsBox.classList.remove('active');
-        }
-    });
+            `
+        )
+        .join("");
+      suggestionsBox.classList.add("active");
+    } else {
+      suggestionsBox.classList.remove("active");
+    }
+  });
 
-    suggestionsBox.addEventListener('click', function(e) {
-        const item = e.target.closest('.suggestion-item');
-        if (item) {
-            const city = item.dataset.city;
-            window.location.href = `/city?q=${encodeURIComponent(city)}`;
-        }
-    });
+  suggestionsBox.addEventListener("click", function (e) {
+    const item = e.target.closest(".suggestion-item");
+    if (item) {
+      const city = item.dataset.city;
+      window.location.href = `/city?q=${encodeURIComponent(city)}`;
+    }
+  });
 
-    const goSearch = () => {
-        const query = searchInput.value.trim();
-        if (query) {
-            window.location.href = `/city?q=${encodeURIComponent(query)}`;
-        }
-    };
+  const goSearch = () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `/city?q=${encodeURIComponent(query)}`;
+    }
+  };
 
-    searchBtn?.addEventListener('click', e => { e.preventDefault(); goSearch(); });
-    searchInput.addEventListener('keypress', e => {
-        if (e.key === 'Enter') { e.preventDefault(); goSearch(); }
-    });
+  searchBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    goSearch();
+  });
+  searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      goSearch();
+    }
+  });
 
-    document.addEventListener('click', e => {
-        if (!e.target.closest('.search-container')) {
-            suggestionsBox.classList.remove('active');
-        }
-    });
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-container")) {
+      suggestionsBox.classList.remove("active");
+    }
+  });
 });

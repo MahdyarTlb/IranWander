@@ -15,7 +15,8 @@
 <header class="header container">
     <nav class="nav">
         <div class="logo">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/logo.png') }}" alt="Iran Wander Logo" loading="lazy" decoding="async"/>
+            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/logo.webp') }}"
+                alt="Iran Wander Logo" loading="lazy" decoding="async" />
             <h1>Iran Wander</h1>
         </div>
         <ul class="nav-links">
@@ -24,212 +25,224 @@
             <li><a href="#">Stories</a></li>
             <li><a href="#">About</a></li>
             {% if current_user.is_authenticated %}
-    <li class="user-menu">
-        <div class="user-avatar-dropdown">
-            <button class="avatar-btn" id="avatarBtn">
-                <div class="avatar-placeholder" data-username="{{ current_user.username }}">
-                    {{ current_user.username[:1]|upper }}
-                </div>
-                <span class="username">{{ current_user.username }}</span>
-                <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                    <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-            </button>
+            <li class="user-menu">
+                <div class="user-avatar-dropdown">
+                    <button class="avatar-btn" id="avatarBtn">
+                        <div class="avatar-placeholder" data-username="{{ current_user.username }}">
+                            {{ current_user.username[:1]|upper }}
+                        </div>
+                        <span class="username">{{ current_user.username }}</span>
+                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </button>
 
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="{{ url_for('user.panel') }}">my profile</a>
-                <a href="{{ url_for('user.panel') }}">favorites</a>
-                <hr>
-                <a href="{{ url_for('user.logout') }}" class="logout">Logout</a>
-            </div>
-        </div>
-    </li>
-{% else %}
-    <li><a href="{{ url_for('auth.login') }}" class="btn-login">Login</a></li>
-{% endif %}
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="{{ url_for('user.panel') }}">my profile</a>
+                        <a href="{{ url_for('user.panel') }}">favorites</a>
+                        <hr>
+                        <a href="{{ url_for('user.logout') }}" class="logout">Logout</a>
+                    </div>
+                </div>
+            </li>
+            {% else %}
+            <li><a href="{{ url_for('auth.login') }}" class="btn-login">Login</a></li>
+            {% endif %}
         </ul>
     </nav>
 
     <div class="hero-search">
-    <div class="search-container">
-        <div class="search-wrapper">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="11" cy="11" r="8" stroke-width="2"/>
-                <path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-
-            <input
-                type="text"
-                id="heroSearch"
-                placeholder="search anything"
-                autocomplete="off"
-                spellcheck="false">
-
-            <button type="submit" class="search-btn">
-                <span>Search</span>
-                <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <div class="search-container">
+            <div class="search-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="11" cy="11" r="8" stroke-width="2" />
+                    <path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round" />
                 </svg>
-            </button>
-        </div>
 
-        <div class="search-suggestions" id="suggestions"></div>
-    </div>
-</div>
+                <input type="text" id="heroSearch" placeholder="search anything" autocomplete="off" spellcheck="false">
 
-    <div class="hero-section">
-    <div class="hero-container">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Discover Iran’s <span>Hidden Wonders</span>
-            </h1>
-            <p class="hero-subtitle">
-                from Kavir-Loot to Si-O-Se-Pol waiting for you
-            </p>
-            <button class="random-btn" id="random-trip-btn">
-                <span class="btn-text">Find Your Next Adventure</span>
-                <svg class="sparkle" viewBox="0 0 24 24">
-                    <path d="M14.187 8.096L15 5l.813 3.096C18.61 9.29 20.71 11.39 21.904 14.187L19 15l-3.096.813C14.71 18.61 12.61 20.71 9.813 21.904L9 19l.813-3.096C7.015 14.71 4.915 12.61 3.721 9.813L6.5 9 3.721 8.187C4.915 5.39 7.015 3.29 9.813 2.096L9 5l.813 3.096C12.61 7.015 14.71 9.115 15.904 11.912L14.187 8.096z"/>
-                </svg>
-            </button>
-        </div>
-
-        <div class="hero-images">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main1.jpg') }}" alt="Iran Nature" class="img-1" loading="lazy">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main2.jpg') }}" alt="Iran Landscape" class="img-2" loading="lazy">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main3.jpg') }}" alt="Iran Culture" class="img-3" loading="lazy">
-        </div>
-    </div>
-
-    <div id="random-popup" class="random-popup">
-        <div class="popup-glass">
-            <div class="popup-header">
-                <h3>Your Random Destination</h3>
-                <button class="close-popup" id="close-popup">×</button>
-            </div>
-            <div class="popup-body">
-                <p class="destination-name" id="random-destination"></p>
-                <p class="destination-hint">are you prepare?</p>
-            </div>
-            <div class="popup-footer">
-                <a href="#" id="go-to-city" class="go-btn">go there</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-{# DESTINATIONS Section #}
-<section class="destinations container">
-    <h2>Top Destinations</h2>
-    <div class="destination-grid">
-        <div class="card">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain1.jpg') }}" alt="Persepolis" loading="lazy" decoding="async"/>
-            <h3>Persepolis</h3>
-            <p>Fars Province</p>
-        </div>
-        <div class="card">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain2.jpeg') }}" alt="Naqsh-e Jahan Square" loading="lazy" decoding="async"/>
-            <h3>Naqsh-e Jahan Square</h3>
-            <p>Isfahan</p>
-        </div>
-        <div class="card">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/ferdosi2.jpg') }}" alt="Ferdowsi's Tomb" loading="lazy" decoding="async"/>
-            <h3>Ferdowsi's Tomb</h3>
-            <p>Mashhad</p>
-        </div>
-        <div class="card">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/milad3.jpg') }}" alt="Milad Tower" loading="lazy" decoding="async"/>
-            <h3>Milad Tower</h3>
-            <p>Tehran</p>
-        </div>
-    </div>
-</section>
-
-{# STORIES Section #}
-<section class="stories container">
-    <h2>Latest Stories</h2>
-    <div class="stories-grid">
-        <div class="story">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/persepolisheader.jpg') }}" alt="Gate of All Nations" loading="lazy" decoding="async"/>
-            <div class="story-content">
-                <h3>Passing Through the Gate of All Nations</h3>
-                <p>
-                    Walking among the ruins of Persepolis feels like stepping into history—an echo of empire and
-                    grandeur.
-                </p>
-            </div>
-        </div>
-        <div class="story">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/storymain.jpg') }}" alt="Isfahan Bazaar" loading="lazy" decoding="async"/>
-            <div class="story-content">
-                <h3>The Grand Bazaar of Isfahan</h3>
-                <p>
-                    Immerse yourself in the colors, scents, and sounds of a centuries-old Persian tradition.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-{# HIGHLIGHTS Section #}
-<section class="highlights container">
-    <h2>Traveler Highlights</h2>
-    <div class="highlights-layout">
-        <div class="highlight-content">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/jangalmain.png') }}" alt="Forest" loading="lazy" decoding="async"/>
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/biabanmain.png') }}" alt="Desert" loading="lazy" decoding="async"/>
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/bazarmain.png') }}" alt="Bazaar" loading="lazy" decoding="async"/>
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/tarikhmain.png') }}" alt="Historical Site" loading="lazy" decoding="async"/>
-        </div>
-        <div class="highlight-text">
-            <h3>A Journey Through Ancient Persia</h3>
-            <p>
-                Discover the hidden gems of Iran — from vast deserts to lush forests and majestic mountains. Every
-                corner tells a story that survived millennia.
-            </p>
-        </div>
-    </div>
-</section>
-
-
-<section class="newsletter">
-    <div class="newsletter-box container">
-        <div class="newsletter-content">
-            <h2>Get Travel Inspiration Straight to Your Inbox</h2>
-            <p>Subscribe for stories, guides, and destination insights.</p>
-        </div>
-
-        <form class="newsletter-form" id="newsletterForm">
-            <div class="input-group">
-                <input type="email" id="emailInput" placeholder="email" required />
-                <button type="submit" class="btn-subscribe">
-                    <span class="text">join</span>
-                    <svg class="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                <button type="submit" class="search-btn">
+                    <span>Search</span>
+                    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M13 5l7 7-7 7" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
                 </button>
             </div>
-            <div class="form-message" id="formMessage"></div>
-        </form>
-    </div>
-</section>
 
-
-<footer class="footer">
-    <div class="container footer-content">
-        <div class="footer-col">
-            <h3>About Iran Wander</h3>
-            <p>
-                Explore Iran’s natural and cultural treasures with us — your guide to the heart of Persia.
-            </p>
+            <div class="search-suggestions" id="suggestions"></div>
         </div>
     </div>
-    <p class="footer-bottom">
-        © 2025 Iran Wander. All Rights Reserved.
-    </p>
-</footer>
 
-{# Linking the main JavaScript file #}
-{% block extra_js %}
-<script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
-{% endblock %}
+    <div class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Discover Iran’s <span>Hidden Wonders</span>
+                </h1>
+                <p class="hero-subtitle">
+                    from Kavir-Loot to Si-O-Se-Pol waiting for you
+                </p>
+                <button class="random-btn" id="random-trip-btn">
+                    <span class="btn-text">Find Your Next Adventure</span>
+                    <svg class="sparkle" viewBox="0 0 24 24">
+                        <path
+                            d="M14.187 8.096L15 5l.813 3.096C18.61 9.29 20.71 11.39 21.904 14.187L19 15l-3.096.813C14.71 18.61 12.61 20.71 9.813 21.904L9 19l.813-3.096C7.015 14.71 4.915 12.61 3.721 9.813L6.5 9 3.721 8.187C4.915 5.39 7.015 3.29 9.813 2.096L9 5l.813 3.096C12.61 7.015 14.71 9.115 15.904 11.912L14.187 8.096z" />
+                    </svg>
+                </button>
+            </div>
 
-{% endblock content %}
+            <div class="hero-images">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main1.webp') }}"
+                    alt="Iran Nature" class="img-1" loading="lazy">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main2.webp') }}"
+                    alt="Iran Landscape" class="img-2" loading="lazy">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/main3.webp') }}"
+                    alt="Iran Culture" class="img-3" loading="lazy">
+            </div>
+        </div>
+
+        <div id="random-popup" class="random-popup">
+            <div class="popup-glass">
+                <div class="popup-header">
+                    <h3>Your Random Destination</h3>
+                    <button class="close-popup" id="close-popup">×</button>
+                </div>
+                <div class="popup-body">
+                    <p class="destination-name" id="random-destination"></p>
+                    <p class="destination-hint">are you prepare?</p>
+                </div>
+                <div class="popup-footer">
+                    <a href="#" id="go-to-city" class="go-btn">go there</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# DESTINATIONS Section #}
+    <section class="destinations container">
+        <h2>Top Destinations</h2>
+        <div class="destination-grid">
+            <div class="card">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain1.webp') }}"
+                    alt="Persepolis" loading="lazy" decoding="async" />
+                <h3>Persepolis</h3>
+                <p>Fars Province</p>
+            </div>
+            <div class="card">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain2.webp') }}"
+                    alt="Naqsh-e Jahan Square" loading="lazy" decoding="async" />
+                <h3>Naqsh-e Jahan Square</h3>
+                <p>Isfahan</p>
+            </div>
+            <div class="card">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/ferdosi2.webp') }}"
+                    alt="Ferdowsi's Tomb" loading="lazy" decoding="async" />
+                <h3>Ferdowsi's Tomb</h3>
+                <p>Mashhad</p>
+            </div>
+            <div class="card">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/milad3.webp') }}"
+                    alt="Milad Tower" loading="lazy" decoding="async" />
+                <h3>Milad Tower</h3>
+                <p>Tehran</p>
+            </div>
+        </div>
+    </section>
+
+    {# STORIES Section #}
+    <section class="stories container">
+        <h2>Latest Stories</h2>
+        <div class="stories-grid">
+            <div class="story">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/persepolisheader.webp') }}"
+                    alt="Gate of All Nations" loading="lazy" decoding="async" />
+                <div class="story-content">
+                    <h3>Passing Through the Gate of All Nations</h3>
+                    <p>
+                        Walking among the ruins of Persepolis feels like stepping into history—an echo of empire and
+                        grandeur.
+                    </p>
+                </div>
+            </div>
+            <div class="story">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/storymain.webp') }}"
+                    alt="Isfahan Bazaar" loading="lazy" decoding="async" />
+                <div class="story-content">
+                    <h3>The Grand Bazaar of Isfahan</h3>
+                    <p>
+                        Immerse yourself in the colors, scents, and sounds of a centuries-old Persian tradition.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# HIGHLIGHTS Section #}
+    <section class="highlights container">
+        <h2>Traveler Highlights</h2>
+        <div class="highlights-layout">
+            <div class="highlight-content">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/jangalmain.webp') }}"
+                    alt="Forest" loading="lazy" decoding="async" />
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/biabanmain.webp') }}"
+                    alt="Desert" loading="lazy" decoding="async" />
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/bazarmain.webp') }}"
+                    alt="Bazaar" loading="lazy" decoding="async" />
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/tarikhmain.webp') }}"
+                    alt="Historical Site" loading="lazy" decoding="async" />
+            </div>
+            <div class="highlight-text">
+                <h3>A Journey Through Ancient Persia</h3>
+                <p>
+                    Discover the hidden gems of Iran — from vast deserts to lush forests and majestic mountains. Every
+                    corner tells a story that survived millennia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="newsletter">
+        <div class="newsletter-box container">
+            <div class="newsletter-content">
+                <h2>Get Travel Inspiration Straight to Your Inbox</h2>
+                <p>Subscribe for stories, guides, and destination insights.</p>
+            </div>
+
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="input-group">
+                    <input type="email" id="emailInput" placeholder="email" required />
+                    <button type="submit" class="btn-subscribe">
+                        <span class="text">join</span>
+                        <svg class="arrow" viewBox="0 0 24 24">
+                            <path d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>About Iran Wander</h3>
+                <p>
+                    Explore Iran’s natural and cultural treasures with us — your guide to the heart of Persia.
+                </p>
+            </div>
+        </div>
+        <p class="footer-bottom">
+            © 2025 Iran Wander. All Rights Reserved.
+        </p>
+    </footer>
+
+    {# Linking the main JavaScript file #}
+    {% block extra_js %}
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% endblock %}
+
+    {% endblock content %}
