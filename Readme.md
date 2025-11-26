@@ -14,7 +14,7 @@ ToDo
 
 ## Shots
 
-HomePage ![HomePage](readme/01.png) Cities ![Cities](readme/02.png) User panel ![panel](readme/03.png)
+HomePage ![HomePage](readme/01.png) Cities ![Cities](readme/02.png) User panel ![panel](readme/03.jpg)
 
 ## Key Features
 
@@ -84,4 +84,4 @@ IranWander is intentionally small but complete — it follows real-world pattern
 
 \_\*\*Made with love in Iran
 
-[Mahdyar Talebi](https://linkedin.com/in/mahdyar-tlb), Ali Arezoomandi, Komeil AhanKobi — CS50x 2025\*\*\_
+# [Mahdyar Talebi](https://linkedin.com/in/mahdyar-tlb), Ali Arezoomandi, Komeil AhanKobi — CS50x 2025\*\*\_
