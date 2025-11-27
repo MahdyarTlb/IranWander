@@ -12,7 +12,6 @@ def about():
 
 @main.route('/stories')
 def stories():
-    print("Helooooooooooo")
     stories = [
     {
         "id": 1,
