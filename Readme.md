@@ -84,4 +84,4 @@ IranWander is intentionally small but complete — it follows real-world pattern
 
 \_\*\*Made with love in Iran
 
-# [Mahdyar Talebi](https://linkedin.com/in/mahdyar-tlb), [Ali Arezoomandi](https://linkedin.com/in/ali-arezoomandi), Komeil AhanKobi — CS50x 2025\*\*\_
+# [Mahdyar Talebi](https://linkedin.com/in/mahdyar-tlb), [Ali Arezoomandi](https://github.com/Ali-Arezoomandi), [Komeil](https://github.com/gitkomeil) AhanKobi — CS50x 2025\*\*\_
