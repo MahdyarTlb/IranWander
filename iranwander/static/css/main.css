@@ -1283,3 +1283,140 @@ body {
     opacity: 1;
   }
 }
+
+/* ====== موبایل منو - همبرگر و منوی کشویی از چپ ====== */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 12px;
+  transition: background 0.3s;
+  z-index: 1002;
+}
+
+.mobile-menu-toggle .close-icon {
+  display: none;
+}
+
+.mobile-menu-toggle.active .hamburger-icon {
+  display: none;
+}
+
+.mobile-menu-toggle.active .close-icon {
+  display: block;
+}
+
+.mobile-menu-toggle:hover {
+  background: var(--glass);
+}
+
+/* منوی موبایل - پوشاننده تمام صفحه */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100vh;
+  background: rgba(8, 51, 68, 0.92);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  transition: left 0.45s cubic-bezier(0.22, 0.9, 0.35, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.mobile-nav-overlay.active {
+  left: 0;
+}
+
+.mobile-nav-content {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.mobile-nav-content .logo {
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin: 3rem 0;
+}
+
+.mobile-nav-links a {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+  padding: 0.5rem 0;
+}
+
+.mobile-nav-overlay.active .mobile-nav-links a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav-links a:hover {
+  color: #23a6a6;
+  text-shadow: 0 0 20px rgba(35, 166, 166, 0.6);
+}
+
+.mobile-nav-links a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-links a:nth-child(2) { transition-delay: 0.2s; }
+.mobile-nav-links a:nth-child(3) { transition-delay: 0.3s; }
+.mobile-nav-links a:nth-child(4) { transition-delay: 0.4s; }
+.mobile-nav-links a:nth-child(5) { transition-delay: 0.5s; }
+
+.mobile-login-btn {
+  background: linear-gradient(90deg, #23a6a6, #198f8f);
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 15px 40px rgba(35, 166, 166, 0.4);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease 0.6s;
+}
+
+.mobile-nav-overlay.active .mobile-login-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    display: none !important; 
+  }
+
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+
+  .search-bar {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+  }
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+}

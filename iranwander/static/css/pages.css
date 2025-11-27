@@ -1,0 +1,144 @@
+/* static/css/pages.css */
+.hero-section {
+    background: linear-gradient(135deg, #26A69A 0%, #00897B 100%);
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px;
+}
+
+.hero-section h1 {
+    font-size: 52px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 22px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    opacity: 0.95;
+    line-height: 1.8;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: white;
+    color: #00897B;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.cards-section {
+    padding: 100px 20px;
+    background: #E0F2F1;
+}
+
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+}
+
+.card-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+}
+
+.card h3 {
+    color: #00897B;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.stories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.story-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.story-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.story-card img {
+    width: 70%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.story-content {
+    padding: 30px;
+}
+
+.story-content h3 {
+    color: #00897B;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.read-more {
+    color: #00897B;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Travelers' Stories - Iran Wander{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+
+<section
+    style="background: url('/static/images/stories-hero.jpg') center/cover no-repeat; color: white; padding: 180px 20px; text-align: center; position: relative;">
+    <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.5);"></div>
+    <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 2;">
+        <h1 style="font-size: 60px; font-weight: 900; text-shadow: 0 4px 10px rgba(0,0,0,0.6);">Stories That Stay With
+            You</h1>
+        <p style="font-size: 24px; margin-top: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.6);">
+            Real voices. Real emotions. Real Iran.
+        </p>
+    </div>
+</section>
+
+<section style="background: #E0F2F1; padding: 100px 20px;">
+    <div
+        style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 50px;">
+
+        {% for story in stories %}
+        <article
+            style="background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.12); transition: all 0.4s;">
+            <img src="{{ story.image }}" alt="{{ story.title }}" style="width: 100%; height: 300px; object-fit: cover;">
+            <div style="padding: 35px;">
+                <h3 style="font-size: 26px; color: #00897B; margin-bottom: 15px; line-height: 1.4;">{{ story.title }}
+                </h3>
+                <p style="color: #444; line-height: 1.9; margin-bottom: 20px;">{{ story.excerpt }}</p>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; color: #888; font-size: 15px;">
+                    <strong style="color: #00897B;">{{ story.author }}</strong>
+                    <span>{{ story.date }}</span>
+                </div>
+                <a href="#"
+                    style="display: block; margin-top: 25px; color: #00897B; font-weight: bold; font-size: 17px;">
+                    Read the full story →
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}

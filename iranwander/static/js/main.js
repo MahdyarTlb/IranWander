@@ -185,3 +185,43 @@ document.addEventListener("DOMContentLoaded", function () {
         messageEl.className = "form-message error";
     }
 });
+const mobileToggle = document.getElementById("mobileMenuToggle");
+const overlay = document.createElement("div");
+overlay.className = "mobile-nav-overlay";
+
+// محتوای منوی موبایل
+overlay.innerHTML = `
+  <div class="mobile-nav-content">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='img/logo.webp') }}" alt="Logo" />
+      <h1>Iran Wander</h1>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <a href="{{ url_for('city.list_cities') }}">Cities</a>
+      <a href="{{ url_for('main.stories') }}">Stories</a>
+      <a href="{{ url_for('main.about') }}">About</a>
+      
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('user.panel') }}">My Profile</a>
+        <a href="{{ url_for('user.logout') }}" style="color:#ff6b6b;">Logout</a>
+      {% else %}
+        <a href="{{ url_for('auth.login') }}" class="mobile-login-btn">Login</a>
+      {% endif %}
+    </div>
+  </div>
+`;
+
+document.body.appendChild(overlay);
+
+mobileToggle.addEventListener("click", () => {
+  mobileToggle.classList.toggle("active");
+  overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) {
+    mobileToggle.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+});

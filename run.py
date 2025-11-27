@@ -2,6 +2,7 @@ from iranwander import create_app
 from flask_compress import Compress
 from flask import send_from_directory
 
+
 app = create_app()
 Compress(app)
 

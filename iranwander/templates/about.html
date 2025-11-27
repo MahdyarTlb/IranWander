@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}About Us - Iran Wander{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+
+<section
+    style="background: linear-gradient(135deg, #26A69A, #00897B); color: white; padding: 140px 20px 100px; text-align: center;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h1 style="font-size: 56px; font-weight: 900; margin-bottom: 20px;">We Are Iran Wander</h1>
+        <p style="font-size: 24px; opacity: 0.95; line-height: 1.8;">
+            Born from a deep love for Iran’s unseen wonders. We don’t just show you places — we help you feel them.
+        </p>
+    </div>
+</section>
+
+<section style="padding: 100px 20px; background: #E0F2F1;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; gap: 260px; align-items: center; flex-wrap: wrap;">
+        <div style="flex: 1; min-width-width: 300px;"> 
+            <h2 style="font-size: 40px; color: #00897B; margin-bottom: 30px;">Our Story</h2>
+            <p style="font-size: 18px; line-height: 2; color: #333;">
+                It all started with a night under the stars in the Lut Desert. We realized most travelers never see the
+                real Iran — only the postcards.<br><br>
+                So we built Iran Wander: a movement to connect curious souls with local storytellers, hidden villages,
+                ancient caravanserais, and untouched nature.
+            </p>
+            <a href="{{ url_for('city.list_cities') }}" class="btn-primary" style="margin-top: 30px;">Join Our Journey</a>
+        </div>
+        <div style="flex: 1; min-width: 300px;">
+            <img src="/static/img/logo.webp" alt="Iran Wander Team"
+                style="width: 70%; height: 20rem; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+        </div>
+    </div> 
+</section>
+
+    <section style="padding: 80px 20px; background: white;">
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon" style="background:#00897B;"></div>
+            <h3>Vision</h3>
+            <p>Every traveler falls in love with the real Iran.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon" style="background:#26A69A;"></div>
+            <h3>Mission</h3>
+            <p>Authentic experiences with real locals.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon" style="background:#004D40;"></div>
+            <h3>Values</h3>
+            <p>Respect, sustainability, and lifelong memories.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

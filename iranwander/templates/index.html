@@ -13,43 +13,55 @@
 
 {% block content %}
 <header class="header container">
-    <nav class="nav">
-        <div class="logo">
-            <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/logo.webp') }}"
-                alt="Iran Wander Logo" loading="lazy" decoding="async" />
-            <h1>Iran Wander</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="{{ url_for('main.index') }}">Home</a></li>
-            <li><a href="{{ url_for('city.list_cities') }}">Cities</a></li>
-            <li><a href="#">Stories</a></li>
-            <li><a href="#">About</a></li>
-            {% if current_user.is_authenticated %}
-            <li class="user-menu">
-                <div class="user-avatar-dropdown">
-                    <button class="avatar-btn" id="avatarBtn">
-                        <div class="avatar-placeholder" data-username="{{ current_user.username }}">
-                            {{ current_user.username[:1]|upper }}
-                        </div>
-                        <span class="username">{{ current_user.username }}</span>
-                        <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                            <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                    </button>
+<nav class="nav">
+    <div class="logo">
+        <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/logo.webp') }}"
+            alt="Iran Wander Logo" />
+        <h1>Iran Wander</h1>
+    </div>
 
-                    <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="{{ url_for('user.panel') }}">my profile</a>
-                        <a href="{{ url_for('user.panel') }}">favorites</a>
-                        <hr>
-                        <a href="{{ url_for('user.logout') }}" class="logout">Logout</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a href="{{ url_for('city.list_cities') }}">Cities</a></li>
+        <li><a href="{{ url_for('main.stories') }}">Stories</a></li>
+        <li><a href="{{ url_for('main.about') }}">About</a></li>
+
+        {% if current_user.is_authenticated %}
+        <li class="user-menu">
+            <div class="user-avatar-dropdown">
+                <button class="avatar-btn" id="avatarBtn">
+                    <div class="avatar-placeholder" data-username="{{ current_user.username }}">
+                        {{ current_user.username[:1]|upper }}
                     </div>
+                    <span class="username">{{ current_user.username }}</span>
+                    <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="{{ url_for('user.panel') }}">my profile</a>
+                    <a href="{{ url_for('user.panel') }}">favorites</a>
+                    <hr>
+                    <a href="{{ url_for('user.logout') }}" class="logout">Logout</a>
                 </div>
-            </li>
-            {% else %}
-            <li><a href="{{ url_for('auth.login') }}" class="btn-login">Login</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+            </div>
+        </li>
+        {% else %}
+        <li><a href="{{ url_for('auth.login') }}" class="btn-login">Login</a></li>
+        {% endif %}
+    </ul>
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="true">
+        <svg class="hamburger-icon" viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5"
+            fill="none">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="close-icon" viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5"
+            fill="none">
+            <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+    </button>
+</nav>
 
     <div class="hero-search">
         <div class="search-container">
@@ -242,7 +254,9 @@
 
     {# Linking the main JavaScript file #}
     {% block extra_js %}
-    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='js/main.js') }}">
+        
+    </script>
     {% endblock %}
 
     {% endblock content %}
