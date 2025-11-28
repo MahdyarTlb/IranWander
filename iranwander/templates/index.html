@@ -62,6 +62,29 @@
         </svg>
     </button>
 </nav>
+<div id="mobileNavOverlay" class="mobile-nav-overlay">
+    <div class="mobile-nav-content">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.webp') }}" alt="Iran Wander Logo" />
+            <h1>Iran Wander</h1>
+        </div>
+
+        <div class="mobile-nav-links">
+            <a href="{{ url_for('main.index') }}">Home</a>
+            <a href="{{ url_for('city.list_cities') }}">Cities</a>
+            <a href="{{ url_for('main.stories') }}">Stories</a>
+            <a href="{{ url_for('main.about') }}">About</a>
+
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('user.panel') }}">My Profile</a>
+            <a href="{{ url_for('user.logout') }}" style="color:#ff6b6b;">Logout</a>
+            {% else %}
+            <a href="{{ url_for('auth.login') }}" class="mobile-login-btn">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 
     <div class="hero-search">
         <div class="search-container">
@@ -259,4 +282,4 @@
     </script>
     {% endblock %}
 
-    {% endblock content %}
+    {% endblock content %}  
