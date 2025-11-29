@@ -17,7 +17,17 @@ The goal of this project was not only to satisfy the CS50 final requirements, bu
 
 ## Shots
 
-HomePage <img src="readme/01.png" width="350" /> Cities ![Cities](readme/02.png) User panel ![panel](readme/03.jpg)
+HomePage
+
+<img src="readme/01.png" width="500" />
+
+Cities 
+
+<img src="readme/02.png" width="500" />
+
+User panel 
+
+<img src="readme/03.png" width="500" />
 
 ## Technology Stack & Rationale
 
