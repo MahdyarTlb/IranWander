@@ -45,20 +45,20 @@ User panel
 
 The project follows a clean, layered structure:
 
-`iranwander/
-│── routes/
-│     ├── main.py
-│     ├── city.py
-│     ├── auth.py
-│     ├── api.py
-│     └── user.py
-│── templates/
-│── static/
-│── models.py
-│── config.py
-│── run.py
-│── migrations/
-│── iranwander.db`
+* iranwander/
+* │── routes/
+* │     ├── main.py
+* │     ├── city.py
+* │     ├── auth.py
+* │     ├── api.py
+* │     └── user.py
+* │── templates/
+* │── static/
+* │── models.py
+* │── config.py
+* │── run.py
+* │── migrations/
+* │── iranwander.db
 
 # ✔️ Blueprint-based Routing
 
@@ -76,11 +76,11 @@ user_bp: user dashboard & profile`
 
 Blue­prints keep the project highly modular. Adding new features—like comments, bookmarks, or an admin dashboard—does not require touching the core app. In __init__.py, the app simply registers each module:
 
-`app.register_blueprint(main_bp)
-app.register_blueprint(city_bp)
-app.register_blueprint(auth_bp)
-app.register_blueprint(api_bp)
-app.register_blueprint(user_bp)`
+* app.register_blueprint(main_bp)
+* app.register_blueprint(city_bp)
+* app.register_blueprint(auth_bp)
+* app.register_blueprint(api_bp)
+* app.register_blueprint(user_bp)
 
 
 _This separation is one of the reasons IranWander is extendable far beyond a CS50 academic project._
@@ -89,7 +89,7 @@ _This separation is one of the reasons IranWander is extendable far beyond a CS5
 
 The data layer uses SQLAlchemy with a relational design:
 
-# user
+**user**
 
 id, username, email, password_hash
 
@@ -97,11 +97,11 @@ created_at
 
 Unique constraints for username & email
 
-# city
+**city**
 
 id, name, description, image
 
-# place
+**place**
 
 id, name, description, city_id
 
@@ -109,13 +109,13 @@ location, hours, price
 
 gallery_images (comma-separated JSON-like text)
 
-# favorites (many-to-many)
+**favorites (many-to-many)**
 
 user_id, city_id
 
 This table powers the “liked cities” feature inside the user dashboard.
 
-# ✔️ Password Security
+## ✔️ Password Security
 
 Users’ passwords are never stored in plaintext:
 
@@ -211,23 +211,23 @@ Cities, cards, grids, and panels reflow properly across breakpoints.
 
 Some of the real problems solved during development:
 
-# 1. Keeping UI and database likes synchronized
+**1. Keeping UI and database likes synchronized**
 
 The UI toggles instantly → backend updates → dashboard stays consistent.
 
-# 2. Designing a safe password reset
+**2. Designing a safe password reset**
 
 Avoiding token storage and ensuring recovery even if email fails.
 
-# 3. Structuring blueprints cleanly
+**3. Structuring blueprints cleanly**
 
 Preventing circular imports and routing conflicts.
 
-# 4. Responsive layout issues
+**4. Responsive layout issues**
 
 Mobile card scaling and modal overflow needed careful tuning.
 
-# 5. Lazy-loaded images & compressed media
+**5. Lazy-loaded images & compressed media**
 
 Ensuring page speed stays high without breaking the layout.
 
