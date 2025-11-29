@@ -1,7 +1,7 @@
 # IranWander — CS50x 2025 Final Project
 A scalable, full-stack exploration platform for Iranian cities & attractions
 
-**Video Demo:** ToDo
+[**🔗Video Demo**](https://youtu.be/o-RtxkdGWKA)
 
 ## Live Demo
 
@@ -17,11 +17,19 @@ The goal of this project was not only to satisfy the CS50 final requirements, bu
 
 ## Shots
 
-## HomePage, Cities 
+**HomePage**
 
-<img src="readme/01.png" width="500" /> <img src="readme/02.png" width="500" />
+<div align="center">
+  <img src="readme/01.png" width="500">
+</div>
 
-## User panel 
+**Cities** 
+
+<div align="center">
+  <img src="readme/02.png" width="500">
+</div>
+
+**User panel** 
 
 <div align="center">
   <img src="readme/03.jpg" width="500">
