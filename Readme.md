@@ -3,16 +3,7 @@ A scalable, full-stack exploration platform for Iranian cities & attractions
 
 ## Video demo
 
-[**🔗Youtube**](https://youtu.be/o-RtxkdGWKA)
-
-<div align="center">
-  <iframe 
-    width="500" 
-    src="https://www.youtube.com/embed/o-RtxkdGWKA" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
-</div>
+[**🔗watch inYoutube**](https://youtu.be/o-RtxkdGWKA)
 
 ## Live Demo
 
