@@ -145,7 +145,6 @@ body {
   font-weight: 600;
 }
 
-/* دکمه */
 .button-sign-in {
   margin-top: 2.5rem;
   width: 100%;
@@ -174,7 +173,6 @@ body {
   background: linear-gradient(135deg, #1976d2, #0d47a1);
 }
 
-/* بازگشت به لاگین */
 .back-to-login {
   margin-top: 1.8rem;
 }
@@ -192,7 +190,6 @@ body {
   text-decoration: underline;
 }
 
-/* === ریسپانسیو کامل و بدون باگ === */
 @media (max-width: 1024px) {
   .login {
     width: 36rem;

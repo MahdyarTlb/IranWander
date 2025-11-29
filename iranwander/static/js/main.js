@@ -185,12 +185,15 @@ document.addEventListener("DOMContentLoaded", function () {
         messageEl.className = "form-message error";
     }
 });
+
 const mobileToggle = document.getElementById("mobileMenuToggle");
 const overlay = document.getElementById("mobileNavOverlay");
+const mobileMenu = document.querySelector('.mobile-menu');
 
 mobileToggle.addEventListener("click", () => {
   mobileToggle.classList.toggle("active");
   overlay.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
 });
 
 overlay.addEventListener("click", (e) => {

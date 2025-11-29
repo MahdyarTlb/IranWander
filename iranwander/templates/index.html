@@ -51,24 +51,18 @@
         {% endif %}
     </ul>
 
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="true">
-        <svg class="hamburger-icon" viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5"
-            fill="none">
-            <path d="M4 6h16M4 12h16M4 18h16" />
+    <button id="mobileMenuToggle" class="mobile-menu-toggle active" aria-label="Toggle menu">
+        <svg class="close-icon" viewBox="0 0 24 24" width="28" height="28">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
         </svg>
-        <svg class="close-icon" viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5"
-            fill="none">
-            <path d="M18 6L6 18M6 6l12 12" />
+        <svg class="hamburger-icon" viewBox="0 0 24 24" width="28" height="28">
+            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
         </svg>
     </button>
+    
 </nav>
 <div id="mobileNavOverlay" class="mobile-nav-overlay">
     <div class="mobile-nav-content">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='img/logo.webp') }}" alt="Iran Wander Logo" />
-            <h1>Iran Wander</h1>
-        </div>
-
         <div class="mobile-nav-links">
             <a href="{{ url_for('main.index') }}">Home</a>
             <a href="{{ url_for('city.list_cities') }}">Cities</a>

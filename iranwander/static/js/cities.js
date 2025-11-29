@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".like-icon").forEach((icon) => {
     icon.addEventListener("click", async function (e) {
-      e.stopPropagation(); // جلوی باز شدن مودال رو بگیره
+      e.stopPropagation(); 
 
       const cityId = this.getAttribute("data-city-id");
       if (!cityId) return;
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } catch (err) {
         console.error(err);
-        alert("مشکل اتصال!");
+        alert("ابتدا وارد شوید");
       } finally {
         this.style.opacity = "1";
         this.style.pointerEvents = "auto";
