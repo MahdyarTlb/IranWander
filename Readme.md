@@ -27,7 +27,7 @@ Cities
 
 User panel 
 
-<img src="readme/03.png" width="500" />
+<img src="readme/03.jpg" width="500" />
 
 ## Technology Stack & Rationale
 
