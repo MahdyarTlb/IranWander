@@ -268,7 +268,7 @@ Visit homepage → explore cities Click any city → view attractions Register/L
 
 ## 💬 Final Thoughts
 
-IranWander began as a CS50 final project, but the structure, modularity, and professional decisions behind it make it much more than a course assignment. It is a clean, scalable foundation for a real startup-grade product—and a demonstration of mastery over Python, Flask, SQL, and modern web development.
+IranWander began as a CS50 final project, but the structure, modularity, and professional decisions behind it make it much more than a course assignment. It is a clean, scalable foundation for a real startup-grade product—and a demonstration of mastery over Python, Flask, SQL, and modern web development, in some of details we got help from Ai's like: Chatgpt or Grok.
 
 _Made with love in Iran 🤍💚❤️_
 
