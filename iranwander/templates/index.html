@@ -88,7 +88,7 @@
                     <path d="m21 21-4.35-4.35" stroke-width="2" stroke-linecap="round" />
                 </svg>
 
-                <input type="text" id="heroSearch" placeholder="search anything" autocomplete="off" spellcheck="false">
+                <input type="text" id="heroSearch" placeholder="search a city" autocomplete="off" spellcheck="false">
 
                 <button type="submit" class="search-btn">
                     <span>Search</span>
@@ -150,32 +150,50 @@
 
     {# DESTINATIONS Section #}
     <section class="destinations container">
-        <h2>Top Destinations</h2>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+
+        <h2>
+        <span>Top</span>
+        <span>Destinations</span>
+        </h2>
+
         <div class="destination-grid">
-            <div class="card">
+            <a class="story-link" href="/city/?q=shiraz">
+                <div class="card">
                 <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain1.webp') }}"
                     alt="Persepolis" loading="lazy" decoding="async" />
                 <h3>Persepolis</h3>
-                <p>Fars Province</p>
+                <p>Shiraz Province</p>
             </div>
-            <div class="card">
-                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain2.webp') }}"
-                    alt="Naqsh-e Jahan Square" loading="lazy" decoding="async" />
-                <h3>Naqsh-e Jahan Square</h3>
-                <p>Isfahan</p>
-            </div>
-            <div class="card">
-                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/ferdosi2.webp') }}"
-                    alt="Ferdowsi's Tomb" loading="lazy" decoding="async" />
-                <h3>Ferdowsi's Tomb</h3>
-                <p>Mashhad</p>
-            </div>
-            <div class="card">
-                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/milad3.webp') }}"
-                    alt="Milad Tower" loading="lazy" decoding="async" />
-                <h3>Milad Tower</h3>
-                <p>Tehran</p>
-            </div>
+            </a>
+
+            <a class="story-link" href="/city/?q=Isfahan">
+                <div class="card">
+                    <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/topdestimain2.webp') }}"
+                        alt="Naqsh-e Jahan Square" loading="lazy" decoding="async" />
+                    <h3>Naqsh-e Jahan Square</h3>
+                    <p>Isfahan</p>
+                </div>
+            </a>
+
+            <a class="story-link" href="/city/?q=mashhad">
+                <div class="card">
+                    <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/ferdosi2.webp') }}"
+                        alt="Ferdowsi's Tomb" loading="lazy" decoding="async" />
+                    <h3>Ferdowsi's Tomb</h3>
+                    <p>Mashhad</p>
+                </div>
+            </a>
+
+            <a class="story-link" href="/city/?q=tehran">
+                <div class="card">
+                    <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/milad3.webp') }}"
+                        alt="Milad Tower" loading="lazy" decoding="async" />
+                    <h3>Milad Tower</h3>
+                    <p>Tehran</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -187,18 +205,62 @@
                 <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/persepolisheader.webp') }}"
                     alt="Gate of All Nations" loading="lazy" decoding="async" />
                 <div class="story-content">
-                    <h3>Passing Through the Gate of All Nations</h3>
+                    <a class = "story-link" href="{{ url_for('main.stories') }}"><h3>Passing Through the Gate of All Nations</h3></a>
                     <p>
                         Walking among the ruins of Persepolis feels like stepping into history—an echo of empire and
                         grandeur.
                     </p>
                 </div>
             </div>
+
+            <div class="story">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/5.jpg') }}"
+                    alt="Gate of All Nations" loading="lazy" decoding="async" />
+                <div class="story-content">
+                    <a class = "story-link" href="{{ url_for('main.stories') }}"><h3>Dinner with a Family in Kashan</h3></a>
+                    <p>
+They invited me for tea. 5 hours and 7 dishes later, I was part of the family. The mother packed me food for 3 days when I left.                    </p>
+                </div>
+            </div>
+
+            <div class="story">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/2.jpg') }}"
+                    alt="Gate of All Nations" loading="lazy" decoding="async" />
+                <div class="story-content">
+                    <a class = "story-link" href="{{ url_for('main.stories') }}"><h3>Tea with Haj Mirza – The 92-Year-Old Poet of Yazd</h3></a>
+                    <p>
+                        He still brews tea the old way every morning and tells stories of caravans that passed through the Silk Road. I sat there for 4 hours and forgot about time...
+                    </p>
+                </div>
+            </div>
+
+            <div class="story">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/3.jpg') }}"
+                    alt="Gate of All Nations" loading="lazy" decoding="async" />
+                <div class="story-content">
+                    <a class = "story-link" href="{{ url_for('main.stories') }}"><h3>I Accidentally Crashed a Persian Wedding in Shiraz</h3></a>
+                    <p>
+                        They saw me taking photos outside, grabbed my hand and pulled me in. 3 hours later I was dancing with the bride’s grandfather. Best night of my life.
+                    </p>
+                </div>
+            </div>
+
+            <div class="story">
+                <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/4.jpg') }}"
+                    alt="Gate of All Nations" loading="lazy" decoding="async" />
+                <div class="story-content">
+                    <a class = "story-link" href="{{ url_for('main.stories') }}"><h3>Sleeping in a 400-Year-Old Caravanserai</h3></a>
+                    <p>
+                        No electricity, no Wi-Fi, just candles and the sound of wind in the courtyard. I woke up at 4 AM and felt like I traveled back in time.
+                    </p>
+                </div>
+            </div>
+
             <div class="story">
                 <img decoding="async" loading="lazy" src="{{ url_for('static', filename='img/storymain.webp') }}"
                     alt="Isfahan Bazaar" loading="lazy" decoding="async" />
                 <div class="story-content">
-                    <h3>The Grand Bazaar of Isfahan</h3>
+                    <a class="story-link" href="{{ url_for('main.stories') }}"><h3>The Grand Bazaar of Isfahan</h3></a>
                     <p>
                         Immerse yourself in the colors, scents, and sounds of a centuries-old Persian tradition.
                     </p>
@@ -255,19 +317,27 @@
     </section>
 
 
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <h3>About Iran Wander</h3>
-                <p>
-                    Explore Iran’s natural and cultural treasures with us — your guide to the heart of Persia.
-                </p>
-            </div>
+<footer class="footer">
+    <div class="floating-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <div class="container footer-content">
+
+        <div class="footer-col">
+            <h3>Iran Wander</h3>
+            <p>
+                Explore Iran’s natural and cultural treasures with us — your guide to the heart of Persia.
+            </p>
         </div>
-        <p class="footer-bottom">
-            © 2025 Iran Wander. All Rights Reserved.
-        </p>
-    </footer>
+    </div>
+
+    <p class="footer-bottom">
+        © 2025 Iran Wander, Made with love in IRAN🤍💚❤️.
+    </p>
+</footer>
 
     {# Linking the main JavaScript file #}
     {% block extra_js %}
